@@ -4,6 +4,7 @@ const app = express()
 const massive = require('massive')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const session = require('express-session')
+const auth_ctrl = require('./controllers/auth_controller')
 app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
@@ -22,3 +23,6 @@ massive(CONNECTION_STRING)
 app.listen(SERVER_PORT, () => {
     console.log(`Working on port ${SERVER_PORT}`)
 })
+app.post('/auth/register', auth_ctrl.register)
+app.post('/auth/login', auth_ctrl.login)
+app.get('/auth/logout', auth_ctrl.logout)
