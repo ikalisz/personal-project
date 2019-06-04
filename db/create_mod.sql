@@ -1,0 +1,1 @@
+insert into car_mod (mod, car_id) values (${mod}, ${car_id})

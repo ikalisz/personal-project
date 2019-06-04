@@ -32,6 +32,13 @@ module.exports = {
         const {mod} = req.body
         const {id} = req.params
         if (!id) return res.status(400).send('Error, there is no id')
-        
+        await db.create_mod({mod, car_id: id})
+    },
+    updateMod: async (req, res) => {
+        const db = req.app.get('db')
+        const {mod} = req.body
+        const {id} = req.params
+        if (!id) return res.status(400).send('Error, there is no id')
+        await db.update_mod({mod, mod_id: id})
     }
 }
