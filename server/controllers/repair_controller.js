@@ -3,8 +3,8 @@ module.exports = {
         const db = req.app.get('db')
         const {user} = req.session
         const {id} = req.params
-        const {mod} = req.body
-        await db.create_repair({car_id: id, user_id: user.id, mod})
+        const {fix, fixCategory} = req.body
+        await db.create_repair({car_id: id, user_id: user.id, fix, fixCategory})
         return res.status(201).send('Repair created')
     },
     updateStatus: async (req, res) => {

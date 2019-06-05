@@ -32,7 +32,7 @@ const ImageBackground = styled.div`
   height: 100vh;
   width: 100vw;
   background: #000;
-  opacity: .93;
+  opacity: .9;
   top: 0;
 `
 export default Loading

@@ -6,6 +6,7 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const session = require('express-session')
 const auth_ctrl = require('./controllers/auth_controller')
 const car_ctrl = require('./controllers/car_controller')
+const repair_ctrl = require('./controllers/repair_controller')
 app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
@@ -33,3 +34,10 @@ app.put('/car/update/:id', car_ctrl.updateCar)
 app.delete('/car/mod/:id', car_ctrl.deleteCar)
 app.post('/car/mod/:id', car_ctrl.createMod)
 app.put('/car/mod/:id', car_ctrl.updateMod)
+app.get('/repairs')
+app.post('/repairs/:id', repair_ctrl.createRepair)
+app.put('/repairs/total/:id', repair_ctrl.updateTotal)
+app.put('/repairs/datesum/:id', repair_ctrl.updateDateSubmitted)
+app.put('/repairs/datestart/:id', repair_ctrl.updateDateStarted)
+app.put('/repairs/datefin/:id', repair_ctrl.updateDateFinished)
+app.put('/repairs/status/:id', repair_ctrl.updateStatus)
