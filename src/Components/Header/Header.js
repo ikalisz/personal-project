@@ -1,12 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import Menu from './Menu/Menu'
+import ProfileDisplay from './Menu/ProfileDisplay'
 
 function Header() {
     return (
         <HeaderEle>
             <LogoDisplay />
-            <Menu />
+            <MenuContainer>
+                <Menu />
+                <ProfileDisplay/>
+            </MenuContainer>
         </HeaderEle>
     )
 }
@@ -26,9 +30,15 @@ const LogoDisplay = styled.img`
     width: 90%;
     background: #fff;
 `
-
-const displayUser = styled.div`
-
+const MenuContainer = styled.main`
+    height: 20%;
+    width: 90%;
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    @media (min-width: 500px) {
+        display: none
+    } 
 `
 
 export default Header

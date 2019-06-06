@@ -1,5 +1,9 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
+import {withRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {getUser, setUser, changeLoading} from '../../redux/Reducers/userReducer'
 
 class Login extends Component {
     constructor() {
@@ -18,10 +22,26 @@ class Login extends Component {
     handleResetState = () => {
         this.setState({username: '', password: ''})
     }
-    handleLogn = () => {
-        
+    handleLogin = () => {
+        this.props.changeLoading()
+        const {username, password} = this.state
+        axios.post('/auth/login', {username, password})
+        .then(res => {
+            this.props.changeLoading()
+            this.props.setUser({...res.data})
+            console.log(res.data)
+        })
+        .catch(err => {
+            this.props.changeLoading()
+        })
+    }
+    handleBossSubmit = () => {
+        this.handleLogin()
+        this.handleResetState()
+        return this.props.history.push('/')
     }
     render() {
+        console.log(this.props)
         return (
            <LoginSection>
                <LoginForm onSubmit={(e) => e.preventDefault()}>
@@ -29,7 +49,7 @@ class Login extends Component {
                     <LoginInput type='text' placeholder='Username' value={this.state.username} onChange={(e) => this.handleUpdateUsername(e.target.value)} />
                     <h2>Password</h2>
                     <LoginInput type='password' placeholder='Password' value={this.state.password} onChange={(e) => this.handleUpdatePassword(e.target.value)} />
-                    <LoginButton type="submit" onClick={this.handleResetState}>Login</LoginButton>
+                    <LoginButton type="submit" onClick={this.handleBossSubmit}>Login</LoginButton>
                     <LoginButton>Register</LoginButton>
                </LoginForm>
            </LoginSection>
@@ -65,4 +85,4 @@ const LoginButton = styled.button`
     outline: none;
 `
 
-export default Login
+export default withRouter(connect(null, {getUser, setUser, changeLoading})(Login))

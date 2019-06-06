@@ -31,8 +31,8 @@ function Menu () {
         }
     }
     return (
-        <MenuContainer className="menu">
-            <MenuButtonContainer>
+        <>
+            <MenuButtonContainer className="menu">
                 <MenuText>Menu</MenuText>
                 <LineHolder>
                     <MenuLine className="topLine" />
@@ -41,18 +41,9 @@ function Menu () {
                 </LineHolder>
             </MenuButtonContainer>
             <button onClick={openMenu}>Click</button>
-        </MenuContainer>
+        </>
     )
 }
-
-const MenuContainer = styled.main`
-    height: 20%;
-    width: 90%;
-    background: #fff;
-    @media (min-width: 500px) {
-        display: none
-    } 
-`
 
 const MenuButtonContainer = styled.section`
     height: 100%;

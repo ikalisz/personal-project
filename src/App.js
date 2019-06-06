@@ -29,7 +29,7 @@ class App extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  return reduxState.loading
+  return reduxState.user
 }
 
 const AppContainer= styled.div`

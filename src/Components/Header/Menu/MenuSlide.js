@@ -8,8 +8,11 @@ function MenuSlide() {
             <LoginLink to='/'>
                 <div>Home</div>
             </LoginLink>
-            <LoginLink to='/login'>
+            <LoginLink to='/user/login'>
                 <div>Login</div>
+            </LoginLink>
+            <LoginLink to='/user/register'>
+                <div>Register</div>
             </LoginLink>
         </MenuSlideContainer>
     )

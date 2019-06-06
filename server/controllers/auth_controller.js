@@ -40,6 +40,7 @@ module.exports = {
         return res.status(200).send('Logged out')
     },
     getUser: (req, res) => {
+        if (!req.session.user) return res.status(401).send('Please login')
         return res.status(200).send(req.session.user)
     }
 }

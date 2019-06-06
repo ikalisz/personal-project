@@ -28,6 +28,7 @@ app.listen(SERVER_PORT, () => {
 app.post('/auth/register', auth_ctrl.register)
 app.post('/auth/login', auth_ctrl.login)
 app.get('/auth/logout', auth_ctrl.logout)
+app.get('/auth/user', auth_ctrl.getUser)
 app.post('/car/register', car_ctrl.registerCar)
 app.get('/car/display', car_ctrl.getCars)
 app.put('/car/update/:id', car_ctrl.updateCar)
