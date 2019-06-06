@@ -7,6 +7,6 @@ export default (
         <Route exact path='/' component={Home} />
         <Route path='/profile' />
         <Route path='/garage' />
-        <Route />
+        <Route path='/login'/>
     </Switch>
 )

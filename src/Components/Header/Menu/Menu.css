@@ -1,0 +1,9 @@
+.openTop {
+    animation: openTop 2s linear;
+}
+
+@keyframes openTop {
+    0% {
+        position: absolute;
+    }
+}

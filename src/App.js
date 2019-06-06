@@ -5,32 +5,15 @@ import styled from 'styled-components'
 import Loading from './Components/Loading'
 import routes from './routes'
 import {HashRouter} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 class App extends Component {
-  constructor() {
-    super()
-    this.state = {
-      loading: false,
-    }
-  }
-
-  handleChangeLoading = () => {
-    this.setState({
-      loading: true
-    })
-    setTimeout(() => {
-      this.setState({
-        loading: false
-      })
-    }, 2000)
-  }
-
   render() {
     return (
       <HashRouter>
         <AppContainer>
           {routes}
-          {this.state.loading ?
+          {this.props.loading ?
           <Loading/>
           :
           null
@@ -41,7 +24,11 @@ class App extends Component {
   }
 }
 
+function mapStateToProps(reduxState) {
+  return reduxState.loading
+}
+
 const AppContainer= styled.div`
   position: absolute;
 `
-export default App;
+export default connect(mapStateToProps)(App);

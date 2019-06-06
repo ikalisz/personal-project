@@ -108,7 +108,10 @@ background-opacity: .7;
 const MainContainer = styled.main`
 height: 85vh;
 width: 100vw;
-display: flex;
+display: none;
+@media (min-width:1000px) {
+    display: flex;
+}
 `
 
 function mapStateToProps(reduxState) {

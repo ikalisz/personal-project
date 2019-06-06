@@ -53,7 +53,8 @@ export function getUser() {
 }
 
 const rootReducer = combineReducers({
-    loaded: imageSlides
+    loaded: imageSlides,
+    loading: loadingReducer
 })
 
 
