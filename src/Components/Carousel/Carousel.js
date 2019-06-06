@@ -80,6 +80,9 @@ class Carousel extends Component {
 
         }
     }
+    componentWillUnmount() {
+        clearInterval(this.state.id)
+    }
     render() {
         let picDisplay = pics.map((pic, i) => {
             return <ImageSlide className="slide" key={i} src={pic} alt="" />

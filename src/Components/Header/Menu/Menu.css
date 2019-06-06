@@ -1,9 +1,106 @@
 .openTop {
-    animation: openTop 2s linear;
+    animation: openTop 300ms linear;
+    position: relatve;
+    transform: translateY(5px) rotate(45deg)
+}
+
+.closeTop {
+    animation: closeTop 300ms linear;
+}
+
+.openMiddle {
+    animation: openMiddle 300ms linear;
+    opacity: 0;
+}
+
+.closeMiddle {
+    animation: closeMiddle 300ms linear;
+}
+
+.openBottom {
+    animation: openBottom 300ms linear;
+    position: relative;
+    transform: translateY(-5px) rotate(-45deg)
+}
+
+.closeBottom {
+    animation: closeBottom 300ms linear;
 }
 
 @keyframes openTop {
     0% {
-        position: absolute;
+        position: relative;
+        transform: translateY(0)
+    }
+    40% {
+        position: relative;
+        transform: translateY(5px) rotate(0)
+    }
+    100% {
+        position: relative;
+        transform: translateY(5px) rotate(45deg)
+    }
+}
+
+@keyframes closeTop {
+    0% {
+        position: relative;
+        transform: translateY(5px) rotate(45deg)
+    }
+    60% {
+        position: relative;
+        transform: translateY(5px) rotate(0)
+    }
+    100% {
+        position: relative;
+        transform: translateY(0)
+    }
+}
+
+@keyframes openMiddle {
+    0% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+}
+
+@keyframes closeMiddle {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+}
+
+@keyframes openBottom {
+    0% {
+        position: relative;
+        transform: translateY(0)
+    }
+    40% {
+        position: relative;
+        transform: translateY(-5px) rotate(0)
+    }
+    100% {
+        position: relative;
+        transform: translateY(-5px) rotate(-45deg)
+    }
+}
+
+@keyframes closeBottom {
+    0% {
+        position: relative;
+        transform: translateY(-5px) rotate(-45deg)
+    }
+    60% {
+        position: relative;
+        transform: translateY(-5px) rotate(0)
+    }
+    100% {
+        position: relative;
+        transform: translateY(0)
     }
 }

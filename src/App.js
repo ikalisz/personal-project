@@ -6,12 +6,16 @@ import Loading from './Components/Loading'
 import routes from './routes'
 import {HashRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
+import Header from './Components/Header/Header'
+import MenuSlide from './Components/Header/Menu/MenuSlide'
 
 class App extends Component {
   render() {
     return (
       <HashRouter>
         <AppContainer>
+          <Header />
+          <MenuSlide />
           {routes}
           {this.props.loading ?
           <Loading/>
