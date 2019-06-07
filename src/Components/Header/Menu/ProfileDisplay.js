@@ -26,8 +26,14 @@ function MenuContainer(props) {
     console.log(props)
     return (
         <Container>
-            <ProfileButton onClick={props.username? handleProfile : handleLogin}>{props.username? 'Profile' : 'Login'}</ProfileButton>
-            {props.username? <Logout onClick={handleLogout}>Logout</Logout> : null}
+            <ProfileButton onClick={props.username || props.match.path === '/user/profile/changepass'
+            || props.match.path === '/user/profile'
+            ? handleProfile : handleLogin}>{props.username || props.match.path === '/user/profile/changepass'
+            || props.match.path === '/user/profile'
+            ? 'Profile' : 'Login'}</ProfileButton>
+            {props.username || props.match.path === '/user/profile/changepass'
+            || props.match.path === '/user/profile'
+            ? <Logout onClick={handleLogout}>Logout</Logout> : null}
         </Container>
     )
 }
@@ -56,4 +62,4 @@ justify-content: space-evenly;
 align-items: center;
 `
 
-export default withRouter(connect(mapStateToProps)(MenuContainer))
+export default withRouter(connect(mapStateToProps, {changeLoading})(MenuContainer))

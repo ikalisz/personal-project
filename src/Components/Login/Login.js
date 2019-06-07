@@ -29,7 +29,6 @@ class Login extends Component {
         .then(res => {
             this.props.changeLoading()
             this.props.setUser({...res.data})
-            console.log(res.data)
         })
         .catch(err => {
             this.props.changeLoading()
@@ -40,8 +39,11 @@ class Login extends Component {
         this.handleResetState()
         return this.props.history.push('/')
     }
+    handleGoRegister = () => {
+        this.handleResetState()
+        return this.props.history.push('/user/register')
+    }
     render() {
-        console.log(this.props)
         return (
            <LoginSection>
                <LoginForm onSubmit={(e) => e.preventDefault()}>
@@ -50,7 +52,7 @@ class Login extends Component {
                     <h2>Password</h2>
                     <LoginInput type='password' placeholder='Password' value={this.state.password} onChange={(e) => this.handleUpdatePassword(e.target.value)} />
                     <LoginButton type="submit" onClick={this.handleBossSubmit}>Login</LoginButton>
-                    <LoginButton>Register</LoginButton>
+                    <LoginButton type="reset" onClick={this.handleGoRegister}>Register</LoginButton>
                </LoginForm>
            </LoginSection>
         )

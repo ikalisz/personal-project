@@ -7,9 +7,11 @@ module.exports = {
         return res.status(201).send('Car registered!')
     },
     getCars: async (req, res) => {
+        console.log('Here')
         const {user} = req.session
         const db = req.app.get('db')
         const result = await db.get_cars({user_id: user.id})
+        console.log(result)
         return res.status(200).send(result)
     },
     updateCar: async (req, res) => {

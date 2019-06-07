@@ -14,6 +14,7 @@ function MenuSlide() {
             <LoginLink to='/user/register'>
                 <div>Register</div>
             </LoginLink>
+            <LoginLink to='/garage'>My Garage</LoginLink>
         </MenuSlideContainer>
     )
 }

@@ -39,8 +39,12 @@ module.exports = {
         req.session.destroy()
         return res.status(200).send('Logged out')
     },
-    getUser: (req, res) => {
+    getUser: async (req, res) => {
+        const db = req.app.get('db')
+        const {username} = req.session.user
         if (!req.session.user) return res.status(401).send('Please login')
-        return res.status(200).send(req.session.user)
+        let result = await db.get_user({username})
+        console.log(result)
+        return res.status(200).send(result[0])
     }
 }

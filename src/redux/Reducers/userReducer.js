@@ -5,6 +5,9 @@ const initialState = {
     email: '',
     phone: null,
     loading: false,
+    firstname: '',
+    lastname: '',
+    password: ''
 }
 
 const CHANGE_LOADING = 'CHANGE_LOADING'
