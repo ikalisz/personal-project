@@ -10,8 +10,9 @@ const initialState = {
 
 const GET_CARS = 'GET_CARS'
 
-export const getCars = () => {
-    let cars = axios.get('/car/display').then(res => res.data)
+export function getCars() {
+    const cars = axios.get('/car/display').then(res => res.data)
+    console.log(cars)
     return {
         type: GET_CARS,
         cars: cars
@@ -21,19 +22,22 @@ export const getCars = () => {
 function reducer(state = initialState, action) {
     console.log(action.type)
     switch (action.type) {
-        case GET_CARS + '_FULFILLED':
-            console.log(action.cars)
-            return {
-                ...state,
-                cars: action.cars
-            }
         case GET_CARS + '_PENDING':
+            console.log(action.type)
             console.log('Pending')
             return {
                 ...state
             }
+        case GET_CARS + '_FULFILLED':
+            return {
+                ...state,
+                cars: action.cars
+            }
+        case GET_CARS + '_REJECTED':
+            return state
         default:
             console.log('Default')
+            console.log(action.type)
             return state
     }
 }

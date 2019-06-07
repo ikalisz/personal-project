@@ -12,7 +12,7 @@ module.exports = {
         const db = req.app.get('db')
         const result = await db.get_cars({user_id: user.id})
         console.log(result)
-        return res.status(200).send(result)
+        return res.status(200).send(result[0])
     },
     updateCar: async (req, res) => {
         const db = req.app.get('db')

@@ -23,7 +23,6 @@ function MenuContainer(props) {
             props.changeLoading()
         })
     }
-    console.log(props)
     return (
         <Container>
             <ProfileButton onClick={props.username || props.match.path === '/user/profile/changepass'
