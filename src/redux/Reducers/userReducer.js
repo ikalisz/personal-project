@@ -4,13 +4,11 @@ const initialState = {
     id: null,
     email: '',
     phone: null,
-    loading: false,
     firstname: '',
     lastname: '',
     password: ''
 }
 
-const CHANGE_LOADING = 'CHANGE_LOADING'
 const GET_USER = 'GET_USER'
 const UPDATE_USERNAME = 'UPDATE_USERNAME'
 const UPDATE_EMAIL = 'UPDATE_EMAIL'
@@ -61,11 +59,6 @@ function reducer (state = initialState, action) {
                 ...state,
                 phone: action.phone
             }
-        case CHANGE_LOADING:
-        let newLoading = !state.loading
-        return {
-            loading: newLoading 
-        }
         default:
             return state
         }
@@ -85,12 +78,6 @@ export const setUser = (user) => {
         phone: user.phone,
         email: user.email,
         id: user.id,
-    }
-}
-
-export function changeLoading() {
-    return {
-        type: CHANGE_LOADING
     }
 }
 

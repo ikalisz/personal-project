@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {getUser, setUser, changeLoading} from '../../redux/Reducers/userReducer'
+import {setUser} from '../../redux/Reducers/userReducer'
+import {changeLoading} from '../../redux/Reducers/loadingReducer'
 
 class Login extends Component {
     constructor() {

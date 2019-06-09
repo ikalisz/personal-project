@@ -15,7 +15,7 @@ export function getCars() {
     console.log(cars)
     return {
         type: GET_CARS,
-        cars: cars
+        payload: cars
     }
 }
 
@@ -23,21 +23,18 @@ function reducer(state = initialState, action) {
     console.log(action.type)
     switch (action.type) {
         case GET_CARS + '_PENDING':
-            console.log(action.type)
-            console.log('Pending')
             return {
                 ...state
             }
         case GET_CARS + '_FULFILLED':
+            console.log(action.payload)
             return {
                 ...state,
-                cars: action.cars
+                cars: [...action.payload]
             }
         case GET_CARS + '_REJECTED':
             return state
         default:
-            console.log('Default')
-            console.log(action.type)
             return state
     }
 }

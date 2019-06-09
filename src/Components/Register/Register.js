@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
-import {changeLoading, setUser} from '../../redux/Reducers/userReducer'
+import {setUser} from '../../redux/Reducers/userReducer'
+import {changeLoading} from '../../redux/Reducers/loadingReducer'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 

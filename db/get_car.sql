@@ -1,4 +1,4 @@
 select * from car_important ci
-left join car_mod cm
+join car_mod cm
 on ci.car_id = cm.car_id
 where ci.car_id = ${car_id}

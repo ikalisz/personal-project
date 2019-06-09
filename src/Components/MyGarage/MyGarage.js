@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import styled from 'styled-components'
 import {changeLoading} from '../../redux/Reducers/userReducer'
 import {getCars} from '../../redux/Reducers/carReducer'
 import DisplayCar from './DisplayCar'
+import axios from 'axios'
 
 class Garage extends Component {
     constructor() {
         super()
     }
     componentDidMount() {
+        axios.get('/auth/user')
         this.props.getCars()
     }
     render() {
@@ -18,12 +20,20 @@ class Garage extends Component {
             return <DisplayCar key={i} id={car.car_id} year={car.year} make={car.make} model={car.model} miles={car.miles} />
         })
         return (
-            <div>
+            <GarageContainer>
                 {cars}
-            </div>
+            </GarageContainer>
         )
     }
 }
+
+const GarageContainer = styled.main`
+    min-height: 100px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 
 function mapStateToProps(state) {
     return {
