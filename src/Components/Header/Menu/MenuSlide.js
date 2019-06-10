@@ -2,22 +2,23 @@ import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {toggleMenu} from '../../../redux/Reducers/menuReducer'
 
 function MenuSlide(props) {
     return (
         <>
         {props.menu?
         <MenuSlideContainer>
-            <LoginLink to='/'>
+            <LoginLink to='/' onClick={props.toggleMenu}>
                 <div>Home</div>
             </LoginLink>
-            <LoginLink to='/user/login'>
+            <LoginLink to='/user/login' onClick={props.toggleMenu} >
                 <div>Login</div>
             </LoginLink>
-            <LoginLink to='/user/register'>
+            <LoginLink to='/user/register' onClick={props.toggleMenu} >
                 <div>Register</div>
             </LoginLink>
-            <LoginLink to='/garage'>My Garage</LoginLink>
+            <LoginLink to='/garage' onClick={props.toggleMenu} >My Garage</LoginLink>
         </MenuSlideContainer>
         :
         null
@@ -42,4 +43,4 @@ function mapStateToProps(state) {
     return state.menu
 }
 
-export default connect(mapStateToProps)(MenuSlide)
+export default connect(mapStateToProps, {toggleMenu})(MenuSlide)

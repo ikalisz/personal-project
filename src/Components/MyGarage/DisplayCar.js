@@ -7,7 +7,7 @@ function DisplayCar(props) {
     let {year, miles, make, model} = props
     return (
         <CarContainer>
-            <img src="https://via.placeholder.com/150" />
+            <img src="https://via.placeholder.com/150" alt="" />
             <ItemList>
                 <CarItem>Miles: {miles}</CarItem>
                 <CarItem>Year: {year}</CarItem>

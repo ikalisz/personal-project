@@ -1,13 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
 import {changeLoading} from '../../redux/Reducers/loadingReducer'
 class Profile extends Component {
-    constructor() {
-        super()
-    }
     componentDidMount() {
         this.props.changeLoading()
         axios.get('/auth/user')

@@ -7,31 +7,14 @@ import './Menu.css'
 function Menu (props) {
     console.log(props)
     function openMenu() {
-        const menu = document.querySelector('.menu')
-        let topLine = document.querySelector('.topLine')
-        let middleLine = document.querySelector('.middleLine')
-        let bottomLine = document.querySelector('.bottomLine')
         switch(props.menu) {
             case false: 
-                topLine.classList.remove('closeTop')
-                topLine.classList.add('openTop')
-                menu.classList.replace('hiddenGoActive', 'activeGoHidden')
-                middleLine.classList.replace('closeMiddle', 'openMiddle')
-                bottomLine.classList.replace('closeBottom', 'openBottom')
                 props.toggleMenu()
                 break
             case true :
-                topLine.classList.replace('openTop', 'closeTop')
-                menu.classList.replace('activeGoHidden', 'hiddenGoActive')
-                middleLine.classList.replace('openMiddle', 'closeMiddle')
-                bottomLine.classList.replace('openBottom', 'closeBottom')
                 props.toggleMenu()
                 break
             default:
-                topLine.classList.add('openTop')
-                menu.classList.add('activeGoHidden')
-                middleLine.classList.add('openMiddle')
-                bottomLine.classList.add('openBottom')
                 props.toggleMenu()
                 break
         }

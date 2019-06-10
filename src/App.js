@@ -11,9 +11,6 @@ import Footer from './Components/Footer/Footer'
 import {resetMenu} from './redux/Reducers/menuReducer'
 
 class App extends Component {
-  constructor() {
-    super()
-  }
   componentDidMount() {
     document.addEventListener('beforeunload', () => {
       this.props.resetMenu()
