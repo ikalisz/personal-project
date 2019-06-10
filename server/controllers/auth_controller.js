@@ -11,6 +11,8 @@ module.exports = {
         let hash = bcrypt.hashSync(password, salt)
         const newUser = await db.register_user({username, password: hash, firstname, lastname, phone, email, pic})
         req.session.user = {
+            firstname: newUser[0].firstname,
+            lastname: newUser[0].lastname,
             username: newUser[0].username,
             phone: newUser[0].phone,
             email: newUser[0].email,
@@ -27,6 +29,8 @@ module.exports = {
         if (!result[0]) return res.status(404).send('User not found')
         if (!bcrypt.compareSync(password, result[0].password)) return res.status(401).send('Username or password incorrect')
         req.session.user = {
+            firstname: result[0].firstname,
+            lastname: result[0].lastname,
             username: result[0].username,
             phone: result[0].phone,
             email: result[0].email,
@@ -41,10 +45,20 @@ module.exports = {
     },
     getUser: async (req, res) => {
         const db = req.app.get('db')
-        const {username} = req.session.user
-        if (!req.session.user) return res.status(401).send('Please login')
-        let result = await db.get_user({username})
-        console.log(result)
-        return res.status(200).send(result[0])
-    }
+        if (!req.session.user) {
+            return res.status(401).send('Please login')
+        } else {
+            const {username} = req.session.user
+            let result = await db.get_user({username})
+            console.log(result)
+            return res.status(200).send(result[0])
+        }
+    },
+    checkUser: (req, res, next) => {
+        if (!req.session.user) {
+            return res.status(401).send('Do please login')
+        } else {
+            next()
+        }
+     }
 }

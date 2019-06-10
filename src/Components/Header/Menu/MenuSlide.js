@@ -1,9 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-function MenuSlide() {
+function MenuSlide(props) {
     return (
+        <>
+        {props.menu?
         <MenuSlideContainer>
             <LoginLink to='/'>
                 <div>Home</div>
@@ -16,6 +19,10 @@ function MenuSlide() {
             </LoginLink>
             <LoginLink to='/garage'>My Garage</LoginLink>
         </MenuSlideContainer>
+        :
+        null
+        }
+        </>
     )
 }
 
@@ -31,4 +38,8 @@ const LoginLink = styled(Link)`
     background: aquamarine
 `
 
-export default MenuSlide
+function mapStateToProps(state) {
+    return state.menu
+}
+
+export default connect(mapStateToProps)(MenuSlide)

@@ -10,13 +10,25 @@ function reducer(state = initalState, action) {
     switch(action.type){
         case TOGGLE_MENU:
             let newMenu = !state.menu
-            if (state.menu === null) return 
+            if (state.menu === null) {
+                return {
+                    menu: true,
+                } 
+            } else {
+                return {
+                    menu: newMenu
+                }
+            }
+        case RESET_MENU:
+            return {
+                menu: null,
+            }
         default:
             return state
     }
 }
 
-export function changeMenu() {
+export function toggleMenu() {
     return {
         type: TOGGLE_MENU
     }

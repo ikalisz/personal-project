@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import './App.css';
-import 'reset-css'
 import styled from 'styled-components'
 import Loading from './Components/Loading'
 import routes from './routes'
@@ -8,8 +7,18 @@ import {HashRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Header from './Components/Header/Header'
 import MenuSlide from './Components/Header/Menu/MenuSlide'
+import Footer from './Components/Footer/Footer'
+import {resetMenu} from './redux/Reducers/menuReducer'
 
 class App extends Component {
+  constructor() {
+    super()
+  }
+  componentDidMount() {
+    document.addEventListener('beforeunload', () => {
+      this.props.resetMenu()
+    })
+  }
   render() {
     return (
       <HashRouter>
@@ -22,6 +31,7 @@ class App extends Component {
           :
           null
           }
+          <Footer />
         </AppContainer>
       </HashRouter>
     );
@@ -33,6 +43,7 @@ function mapStateToProps(reduxState) {
 }
 
 const AppContainer= styled.div`
-  position: absolute;
+  max-height: 100vh;
+  width: 100vw;
 `
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {resetMenu})(App);

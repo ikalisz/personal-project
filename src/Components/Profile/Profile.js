@@ -3,50 +3,36 @@ import {connect} from 'react-redux'
 import {withRouter, Redirect} from 'react-router-dom'
 import styled from 'styled-components'
 import axios from 'axios'
-import {changeLoading} from '../../redux/Reducers/userReducer'
+import {changeLoading} from '../../redux/Reducers/loadingReducer'
 class Profile extends Component {
     constructor() {
         super()
-        this.state = {
-            id: null,
-            firstname: '',
-            lastname: '',
-            phone: '',
-            email: '',
-            edit: false,
-        }
     }
     componentDidMount() {
         this.props.changeLoading()
         axios.get('/auth/user')
         .then(res => {
             console.log(res.data)
-            this.setState({
-                id: res.data.id,
-                firstname: res.data.firstname,
-                lastname: res.data.lastname,
-                phone: res.data.phone,
-                email: res.data.email,
-                loggedIn: true
-            })
             this.props.changeLoading()
-
         })
         .catch(err => {
-            console.log(err)
             this.props.changeLoading()
-        })  
+            window.alert(err.response.data)
+            this.props.history.push('/user/login')
+        })
     }
-
+    UserAndPass = () => {
+        this.props.history.push('/user/change')
+    }
     render() {
         console.log(this.props)
         return (
             <ProfileMain>
                 <ProfileContainer>
-                    <ItemDisplay>First name: {this.state.firstname}</ItemDisplay>
-                    <ItemDisplay>Last name: {this.state.lastname}</ItemDisplay>
-                    <ItemDisplay>Phone: {this.state.phone}</ItemDisplay>
-                    <ItemDisplay>Email: {this.state.email}</ItemDisplay> 
+                    <ItemDisplay>First name: {this.props.firstname}</ItemDisplay>
+                    <ItemDisplay>Last name: {this.props.lastname}</ItemDisplay>
+                    <ItemDisplay>Phone: {this.props.phone}</ItemDisplay>
+                    <ItemDisplay>Email: {this.props.email}</ItemDisplay> 
                     <UserPassButton>Username and password</UserPassButton>
                     <EditButton>Edit info</EditButton>
                 </ProfileContainer>
@@ -62,9 +48,10 @@ function mapStateToProps(state) {
 
 
 const ProfileMain = styled.main`
-    height: 85vh;
+    height: 65vh;
     width: 100vw;
-    background: blue;
+    display: flex;
+    justify-content: center;
 `
 const ProfileContainer = styled.div`
     height: 100%;
@@ -80,7 +67,8 @@ const UserPassButton = styled.button`
 const EditButton = styled.button`
 `
 const ItemDisplay = styled.h2`
-
+    margin: 0;
+    padding: 0;
 `
 
 

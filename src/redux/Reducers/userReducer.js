@@ -6,39 +6,22 @@ const initialState = {
     phone: null,
     firstname: '',
     lastname: '',
-    password: ''
 }
 
-const GET_USER = 'GET_USER'
 const UPDATE_USERNAME = 'UPDATE_USERNAME'
 const UPDATE_EMAIL = 'UPDATE_EMAIL'
 const UPDATE_PHONE = 'UPDATE_PHONE'
 const SET_USER = 'SET_USER'
+const RESET_USER = 'RESET_USER'
 
 function reducer (state = initialState, action) {
     switch(action.type) {
-        case GET_USER + '_PENDING':
-            return {
-                ...state,
-                loading: true
-            }
-        case GET_USER + '_REJECTED':
-            return {
-                ...state,
-                loading: false
-            }
-        case GET_USER + '_FULFILLED':
-            return {
-                username: action.payload.username,
-                id: action.payload.id,
-                email: action.payload.email,
-                phone: action.payload.phone,
-                loading: false
-            }
         case SET_USER:
             console.log(action)
             return {
                 ...state,
+                firstname: action.firstname,
+                lastname: action.lastname,
                 username: action.username,
                 id: action.id,
                 email: action.email,
@@ -59,18 +42,26 @@ function reducer (state = initialState, action) {
                 ...state,
                 phone: action.phone
             }
+        case RESET_USER:
+            return {
+                username: '',
+                id: null,
+                email: '',
+                phone: '',
+                firstname: '',
+                lastname: ''
+            }
         default:
             return state
         }
 }
 
-export const getUser = () => {
-    let user = axios.get('/auth/user').then(userdata => userdata.user)
+export const resetUser = () => {
     return {
-        type: GET_USER,
-        payload: user
+        type: RESET_USER
     }
 }
+
 export const setUser = (user) => {
     return {
         type: SET_USER,
@@ -78,6 +69,8 @@ export const setUser = (user) => {
         phone: user.phone,
         email: user.email,
         id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname
     }
 }
 

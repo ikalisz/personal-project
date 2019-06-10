@@ -3,7 +3,8 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 import axios from 'axios'
-import {changeLoading} from '../../../redux/Reducers/userReducer'
+import {changeLoading} from '../../../redux/Reducers/loadingReducer'
+import {resetUser} from '../../../redux/Reducers/userReducer'
 
 function MenuContainer(props) {
     function handleLogin() {
@@ -17,6 +18,7 @@ function MenuContainer(props) {
         axios.get('/auth/logout')
         .then(res => {
             props.changeLoading()
+            props.resetUser()
         })
         .catch(err => {
             console.log(err)
@@ -25,14 +27,8 @@ function MenuContainer(props) {
     }
     return (
         <Container>
-            <ProfileButton onClick={props.username || props.match.path === '/user/profile/changepass'
-            || props.match.path === '/user/profile'
-            ? handleProfile : handleLogin}>{props.username || props.match.path === '/user/profile/changepass'
-            || props.match.path === '/user/profile'
-            ? 'Profile' : 'Login'}</ProfileButton>
-            {props.username || props.match.path === '/user/profile/changepass'
-            || props.match.path === '/user/profile'
-            ? <Logout onClick={handleLogout}>Logout</Logout> : null}
+            <ProfileButton onClick={props.username ? handleProfile : handleLogin}>{props.username ? 'Profile' : 'Login'}</ProfileButton>
+            {props.username ? <Logout onClick={handleLogout}>Logout</Logout> : null}
         </Container>
     )
 }
@@ -61,4 +57,4 @@ justify-content: space-evenly;
 align-items: center;
 `
 
-export default withRouter(connect(mapStateToProps, {changeLoading})(MenuContainer))
+export default withRouter(connect(mapStateToProps, {changeLoading, resetUser})(MenuContainer))

@@ -62,7 +62,7 @@ class Login extends Component {
 
 //Styled Components
 const LoginSection = styled.section`
-    height: 80vh;
+    height: 69vh;
     width: 100vw;
     background: blue;
     display: flex;
@@ -81,6 +81,8 @@ const LoginForm = styled.form`
 `
 const LoginInput = styled.input`
     width: 60%;
+    padding: 0;
+    border: 0;
 `
 const LoginButton = styled.button`
     height: 25px;
@@ -88,4 +90,4 @@ const LoginButton = styled.button`
     outline: none;
 `
 
-export default withRouter(connect(null, {getUser, setUser, changeLoading})(Login))
+export default withRouter(connect(null, {setUser, changeLoading})(Login))

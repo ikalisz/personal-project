@@ -1,38 +1,44 @@
 import React from 'react'
 import styled from 'styled-components'
+import {connect} from 'react-redux'
+import {toggleMenu} from '../../../redux/Reducers/menuReducer'
 import './Menu.css'
 
-function Menu () {
+function Menu (props) {
+    console.log(props)
     function openMenu() {
         const menu = document.querySelector('.menu')
         let topLine = document.querySelector('.topLine')
         let middleLine = document.querySelector('.middleLine')
         let bottomLine = document.querySelector('.bottomLine')
-        switch(menu.classList[3]) {
-            case 'hiddenGoActive': 
+        switch(props.menu) {
+            case false: 
                 topLine.classList.remove('closeTop')
                 topLine.classList.add('openTop')
                 menu.classList.replace('hiddenGoActive', 'activeGoHidden')
                 middleLine.classList.replace('closeMiddle', 'openMiddle')
                 bottomLine.classList.replace('closeBottom', 'openBottom')
+                props.toggleMenu()
                 break
-            case 'activeGoHidden':
+            case true :
                 topLine.classList.replace('openTop', 'closeTop')
                 menu.classList.replace('activeGoHidden', 'hiddenGoActive')
                 middleLine.classList.replace('openMiddle', 'closeMiddle')
                 bottomLine.classList.replace('openBottom', 'closeBottom')
+                props.toggleMenu()
                 break
             default:
                 topLine.classList.add('openTop')
                 menu.classList.add('activeGoHidden')
                 middleLine.classList.add('openMiddle')
                 bottomLine.classList.add('openBottom')
+                props.toggleMenu()
                 break
         }
     }
     return (
         <>
-            <MenuButtonContainer className="menu">
+            <MenuButtonContainer onClick={openMenu} className="menu">
                 <MenuText>Menu</MenuText>
                 <LineHolder>
                     <MenuLine className="topLine" />
@@ -40,20 +46,19 @@ function Menu () {
                     <MenuLine className="bottomLine" />
                 </LineHolder>
             </MenuButtonContainer>
-            <button onClick={openMenu}>Click</button>
         </>
     )
 }
 
 const MenuButtonContainer = styled.section`
     height: 100%;
-    width: 90px;
+    width: 100px;
     background: pink;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 `
-const MenuText = styled.h2`
+const MenuText = styled.h3`
     width: 50%;
     margin: 0;
 `
@@ -70,4 +75,8 @@ const MenuLine = styled.div`
     background: #000;
 `
 
-export default Menu
+function mapStateToProps(state) {
+    return state.menu
+}
+
+export default connect(mapStateToProps, {toggleMenu})(Menu)

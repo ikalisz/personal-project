@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
-import {changeLoading} from '../../redux/Reducers/userReducer'
+import {changeLoading} from '../../redux/Reducers/loadingReducer'
 import {getCars} from '../../redux/Reducers/carReducer'
 import DisplayCar from './DisplayCar'
 import axios from 'axios'
@@ -12,7 +12,13 @@ class Garage extends Component {
     }
     componentDidMount() {
         axios.get('/auth/user')
-        this.props.getCars()
+        .then(res => {
+            this.props.getCars()
+        })
+        .catch(err => {
+            window.alert(err.response.data)
+            this.props.history.push('/user/login')
+        })
     }
     render() {
         console.log(this.props)
@@ -29,6 +35,8 @@ class Garage extends Component {
 
 const GarageContainer = styled.main`
     min-height: 100px;
+    max-height: 65vh;
+    overflow: scroll;
     width: 100vw;
     display: flex;
     flex-direction: column;
