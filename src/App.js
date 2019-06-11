@@ -22,7 +22,9 @@ class App extends Component {
         <AppContainer>
           <Header />
           <MenuSlide />
-          {routes}
+          <RouteContainer>
+            {routes}
+          </RouteContainer>
           {this.props.loading ?
           <Loading/>
           :
@@ -40,7 +42,15 @@ function mapStateToProps(reduxState) {
 }
 
 const AppContainer= styled.div`
-  max-height: 100vh;
+  height: 100vh;
   width: 100vw;
 `
+
+const RouteContainer = styled.main`
+  height: 65vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`
+
 export default connect(mapStateToProps, {resetMenu})(App);

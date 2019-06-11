@@ -62,7 +62,7 @@ class Login extends Component {
 
 //Styled Components
 const LoginSection = styled.section`
-    height: 69vh;
+    height: 100%;
     width: 100vw;
     background: blue;
     display: flex;

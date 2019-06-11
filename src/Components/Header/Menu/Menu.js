@@ -46,8 +46,8 @@ const MenuText = styled.h3`
     margin: 0;
 `
 const LineHolder = styled.section`
-    height: 60%;
-    width: 30%;
+    height: 18px;
+    width: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

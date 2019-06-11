@@ -16,7 +16,7 @@ function Header() {
 }
 
 const HeaderEle = styled.header`
-    height: 150px;
+    height: 25vh;
     width: 100vw;
     background: #111;
     display: flex;

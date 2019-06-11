@@ -77,36 +77,38 @@ class Register extends Component {
             <RegisterSection>
                 <RegisterForm onSubmit={(e) => e.preventDefault()}>
                     <RegisterInputContainer>
-                        <h2>First name:</h2>
+                        <p>First name:</p>
                         <RegisterInput type='text' placeholder='First name' required onChange={(e) => this.handleChangeFirst(e.target.value)} />
                     </RegisterInputContainer>
                     <RegisterInputContainer>
-                        <h2>Last name:</h2>
+                        <p>Last name:</p>
                         <RegisterInput type='text' placeholder='Lastname' onChange={(e) => this.handleChangeLast(e.target.value)} />
                     </RegisterInputContainer>
                     <RegisterInputContainer>
-                        <h2>Email:</h2>
+                        <p>Email:</p>
                         <RegisterInput type='email' placeholder='Email' required onChange={(e) => this.handleChangeEmail(e.target.value)} />
                     </RegisterInputContainer>
                     <RegisterInputContainer>
-                        <h2>Phone:</h2>
+                        <p>Phone:</p>
                         <RegisterInput type='tel' pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}' placeholder='Phone format: 123-456-7890' required onChange={(e) => this.handleChangePhone(e.target.value)} />
                     </RegisterInputContainer>
                     <RegisterInputContainer>
-                        <h2>Username:</h2>
+                        <p>Username:</p>
                         <RegisterInput type='text' placeholder='Username' required onChange={(e) => this.handleChangeUser(e.target.value)} />
                     </RegisterInputContainer>
                     <RegisterInputContainer>
-                        <h2>Password:</h2>
+                        <p>Password:</p>
                         <RegisterInput type='password' placeholder='Password' required onChange={(e) => this.handleChangePass(e.target.value)} />
                     </RegisterInputContainer>
                     <RegisterInputContainer>
-                        <h2>Confirm password:</h2>
+                        <p>Confirm password:</p>
                         <RegisterInput type='password' placeholder='Confirm password' required onChange={(e) => this.handleChangeConfirm(e.target.value)} />
                     </RegisterInputContainer>
+                    <ButtonContainer>
                         <RegisterButton type="submit" onClick={this.handleSubmitRegister}>Register</RegisterButton>
-                        <h2>Already have an account?</h2>
-                    <RegisterButton onClick={this.handleGoLogin}>Login</RegisterButton>
+                        <p>Already have an account?</p>
+                        <RegisterButton onClick={this.handleGoLogin}>Login</RegisterButton>
+                    </ButtonContainer>
                 </RegisterForm>
             </RegisterSection>
         )
@@ -114,9 +116,8 @@ class Register extends Component {
 }
 
 const RegisterSection = styled.section`
-    height: 80vh;
+    height: 100%;
     width: 100vw;
-    background: blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,21 +126,30 @@ const RegisterSection = styled.section`
 const RegisterForm = styled.form`
     height: 100%;
     width: 90%;
-    background: indianred;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    padding-bottom: 5px;
 `
 const RegisterInputContainer = styled.section`
-    height: 30px;
+    height: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `
+const ButtonContainer = styled.section`
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column
+`
+
 const RegisterInput = styled.input`
-    width: 60%;
+    width: 45%;
 `
 const RegisterButton = styled.button`
     height: 25px;

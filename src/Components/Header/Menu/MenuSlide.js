@@ -31,6 +31,8 @@ const MenuSlideContainer = styled.main`
     width: 100%;
     height: 150px;
     background: pink;
+    position: absolute;
+    z-index: 20;
 `
 
 const LoginLink = styled(Link)`

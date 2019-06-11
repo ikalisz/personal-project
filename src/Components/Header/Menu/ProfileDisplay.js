@@ -23,6 +23,7 @@ function MenuContainer(props) {
         .then(res => {
             props.changeLoading()
             props.resetUser()
+            props.history.push('/')
         })
         .catch(err => {
             console.log(err)

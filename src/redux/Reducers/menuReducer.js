@@ -10,9 +10,6 @@ function reducer(state = initalState, action) {
     let topLine = document.querySelector('.topLine')
     let middleLine = document.querySelector('.middleLine')
     let bottomLine = document.querySelector('.bottomLine')
-    console.log(topLine)
-    console.log(middleLine)
-    console.log(bottomLine)
     switch(action.type){
         case TOGGLE_MENU:
             let newMenu = !state.menu

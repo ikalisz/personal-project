@@ -10,7 +10,7 @@ function Footer() {
 }
 
 const FooterContainer = styled.footer`
-    height: calc(100vh - (65vh + 150px));
+    height: 10vh;
     width: 100vw;
     background: black;
     position: fixed;
