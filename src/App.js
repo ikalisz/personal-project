@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import styled from 'styled-components'
+import axios from 'axios'
 import Loading from './Components/Loading'
 import routes from './routes'
 import {HashRouter} from 'react-router-dom'
@@ -9,11 +10,16 @@ import Header from './Components/Header/Header'
 import MenuSlide from './Components/Header/Menu/MenuSlide'
 import Footer from './Components/Footer/Footer'
 import {resetMenu} from './redux/Reducers/menuReducer'
+import {setUser} from './redux/Reducers/userReducer'
 
 class App extends Component {
   componentDidMount() {
     document.addEventListener('beforeunload', () => {
       this.props.resetMenu()
+    })
+    axios.get('/auth/user')
+    .then(res => {
+      this.props.setUser({...res.data})
     })
   }
   render() {
@@ -53,4 +59,4 @@ const RouteContainer = styled.main`
   justify-content: center;
 `
 
-export default connect(mapStateToProps, {resetMenu})(App);
+export default connect(mapStateToProps, {resetMenu, setUser})(App);

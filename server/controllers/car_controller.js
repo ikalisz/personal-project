@@ -9,19 +9,17 @@ module.exports = {
         return res.status(201).send('Car registered!')
     },
     getCars: async (req, res) => {
-        console.log('Here')
         const {user} = req.session
         const db = req.app.get('db')
         const result = await db.get_cars({user_id: user.id})
-        console.log(result)
         return res.status(200).send(result)
     },
     updateCar: async (req, res) => {
         const db = req.app.get('db')
-        const {year, make, miles, img} = req.body
+        const {year, make, model, miles, img} = req.body
         const {id} = req.params
         if (!id) return res.status(400).send('Error there is no car_id')
-        const result = await db.update_car({year, make, miles, img, car_id: id})
+        const result = await db.update_car({year, make, miles, img, model, car_id: id})
         return res.status(200).send(result[0])
     },
     deleteCar: async (req, res) => {
@@ -44,5 +42,11 @@ module.exports = {
         const {id} = req.params
         if (!id) return res.status(400).send('Error, there is no id')
         await db.update_mod({mod, mod_id: id})
+    },
+    getCar: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const result = await db.get_car({car_id: id})
+        res.status(200).send(result[0])
     }
 }

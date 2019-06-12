@@ -50,7 +50,6 @@ module.exports = {
         } else {
             const {username} = req.session.user
             let result = await db.get_user({username})
-            console.log(result)
             return res.status(200).send(result[0])
         }
     },

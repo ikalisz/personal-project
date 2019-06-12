@@ -12,7 +12,6 @@ const GET_CARS = 'GET_CARS'
 
 export function getCars() {
     const cars = axios.get('/car/display').then(res => res.data)
-    console.log(cars)
     return {
         type: GET_CARS,
         payload: cars
@@ -20,7 +19,6 @@ export function getCars() {
 }
 
 function reducer(state = initialState, action) {
-    console.log(action.type)
     switch (action.type) {
         case GET_CARS + '_PENDING':
             return {

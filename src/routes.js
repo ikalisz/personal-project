@@ -7,6 +7,9 @@ import NotFound from './Components/NotFound/NotFound'
 import Profile from './Components/Profile/Profile'
 import Garage from './Components/MyGarage/MyGarage'
 import AddCar from './Components/MyGarage/AddCar'
+import DisplaySingleCar from './Components/DisplayCar/DisplaySingleCar'
+import UpdateCar from './Components/DisplayCar/UpdateCar'
+import QuickFix from './Components/QuickFix/QuickFix'
 
 export default (
     <Switch>
@@ -16,6 +19,9 @@ export default (
         <Route path='/user/profile' component={Profile} />
         <Route exact path='/garage' component={Garage} />
         <Route path='/garage/add' component={AddCar} />
+        <Route path='/car/:id' component={DisplaySingleCar} />
+        <Route path='/update/:id' component={UpdateCar} />
+        <Route path='/quickfix/:id' component={QuickFix} />
         <Route component={NotFound} />
     </Switch>
 )

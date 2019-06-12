@@ -5,7 +5,6 @@ import {toggleMenu} from '../../../redux/Reducers/menuReducer'
 import './Menu.css'
 
 function Menu (props) {
-    console.log(props)
     function openMenu() {
         switch(props.menu) {
             case false: 

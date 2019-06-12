@@ -55,11 +55,11 @@ const Logout = styled.button`
     margin: 0;
 `
 const Container = styled.div`
-height: 100%;
-min-width: 20%;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
+    height: 100%;
+    min-width: 20%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 `
 
 export default withRouter(connect(mapStateToProps, {changeLoading, resetUser, resetMenu})(MenuContainer))

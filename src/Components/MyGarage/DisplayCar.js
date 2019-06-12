@@ -9,7 +9,7 @@ import {connect} from 'react-redux'
 
 
 function DisplayCar(props) {
-    let {year, miles, make, model, id} = props
+    let {year, miles, make, model, id, image} = props
     function removeCar() {
         props.changeLoading()
         axios.delete(`/car/${id}`)
@@ -22,15 +22,18 @@ function DisplayCar(props) {
             window.alert(err.response.data)
         })
     }
+    function showCar() {
+        return props.history.push(`/car/${id}`)
+    }
     return (
         <CarContainer>
-            <img src="https://via.placeholder.com/150" alt="" />
+            <img src={image} alt="" />
             <ItemList>
                 <UtilityButtons>
                     <Icons.Trash2 onClick={removeCar}/>
-                    <Icons.ZoomIn />
+                    <Icons.ZoomIn onClick={showCar} />
                 </UtilityButtons>
-                <CarItem>Car: {year} {make} {model}</CarItem> 
+                <CarItem>{year} {make} {model}</CarItem> 
                 <CarItem>Miles: {miles}</CarItem>
             </ItemList>
         </CarContainer>
@@ -42,6 +45,7 @@ const CarContainer = styled.div`
     width: 100vw;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid #000;
 `
 
 const CarItem = styled.h4`

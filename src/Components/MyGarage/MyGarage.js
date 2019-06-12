@@ -6,14 +6,17 @@ import {getCars} from '../../redux/Reducers/carReducer'
 import {resetMenu} from '../../redux/Reducers/menuReducer'
 import DisplayCar from './DisplayCar'
 import axios from 'axios'
+import * as Icons from 'react-feather'
 
 class Garage extends Component {
     componentDidMount() {
+        this.props.changeLoading()
         axios.get('/auth/user')
         .then(res => {
-            this.props.getCars()
+            this.props.getCars().then(this.props.changeLoading())
         })
         .catch(err => {
+            this.props.changeLoading()
             this.props.history.push('/user/login')
             this.props.resetMenu()
             window.alert(err.response.data)
@@ -23,14 +26,17 @@ class Garage extends Component {
         this.props.history.push('/garage/add')
     }
     render() {
-        console.log(this.props)
+        let url = 'https://via.placeholder.com/150'
         const cars = this.props.cars.cars.map((car, i) => {
-            return <DisplayCar key={i} id={car.car_id} year={car.year} make={car.make} model={car.model} miles={car.miles} />
+            return <DisplayCar key={i} id={car.car_id} year={car.year} make={car.make} model={car.model} miles={car.miles} image={url} />
         })
         return (
             <MyGarage>
             <ButtonContainer>
-                <AddCar onClick={this.addCar}>Add Car</AddCar>
+                <AddCar onClick={this.addCar}>
+                    <Icons.PlusSquare />
+                    Add Car
+                </AddCar>
             </ButtonContainer>
             <GarageContainer>
                 {cars}
@@ -48,21 +54,28 @@ const GarageContainer = styled.main`
     flex-direction: column;
     align-items: center;
     background: pink;
+    border-top: 1px solid black;
 `
 
-const AddCar = styled.section`
+const AddCar = styled.div`
     height: 30px;
     width: 100px;
     border: black solid 2px;
-    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 5px;
+    :hover {
+        color: pink;
+        border-color: pink;
+    }
 `
 const ButtonContainer = styled.div`
-    height: 5vh;
+    height: 10vh;
     width: 100vw;
     display: flex;
     justify-content: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    align-items: center;
 `
 const MyGarage = styled.main`
     height: 100%;
