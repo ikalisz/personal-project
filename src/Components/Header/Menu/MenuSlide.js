@@ -19,6 +19,7 @@ function MenuSlide(props) {
                 <div>Register</div>
             </LoginLink>
             <LoginLink to='/garage' onClick={props.toggleMenu} >My Garage</LoginLink>
+            <LoginLink to='/user/repairs' onClick={props.toggleMenu}></LoginLink>
         </MenuSlideContainer>
         :
         null

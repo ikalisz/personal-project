@@ -24,6 +24,6 @@ export default class ReactCarousel extends Component {
 }
 
 const HeightChanger = styled.div`
-    height: 65vh;
+    height: 55vh;
     width: 100vw;
 `

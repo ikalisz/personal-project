@@ -1,11 +1,12 @@
 module.exports = {
-    createRepair: async (req, res) => {
+    createRepair: async (req, res, next) => {
         const db = req.app.get('db')
         const {user} = req.session
         const {id} = req.params
-        const {fix, fixCategory} = req.body
-        await db.create_repair({car_id: id, user_id: user.id, fix, fixCategory})
-        return res.status(201).send('Repair created')
+        const {fix, fixCategory, date} = req.body
+        console.log(`fix: ${fix}, fixCategory: ${fixCategory}`)
+        await db.create_repair({car_id: id, user_id: user.id, fix, fix_category: fixCategory, date_submitted: date, date_finished: date, date_start: date, total: 0, status: 'Pending'})
+        return next()
     },
     updateStatus: async (req, res) => {
         const db = req.app.get('db')
@@ -40,5 +41,10 @@ module.exports = {
         const {id} = req.params
         const {date_finished} = req.body
         await db.update_date_finished({repair_id: id, date_finished})
+    },
+    getDate: async (req, res) => {
+        const db = req.app.get('db')
+        let date = await db.get_date()
+        return res.status(200).send(date)
     }
 }

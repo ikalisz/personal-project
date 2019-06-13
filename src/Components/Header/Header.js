@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Menu from './Menu/Menu'
 import ProfileDisplay from './Menu/ProfileDisplay'
+import NavBar from './Nav/Navbar'
 
 function Header() {
     return (
@@ -11,6 +12,7 @@ function Header() {
                 <Menu />
                 <ProfileDisplay/>
             </MenuContainer>
+            <NavBar />
         </HeaderEle>
     )
 }

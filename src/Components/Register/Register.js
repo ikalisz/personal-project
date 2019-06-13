@@ -23,16 +23,12 @@ class Register extends Component {
         this.setState({username})
     }
     handleChangePass = (password) => {
-        console.log(password)
         this.setState({password})
     }
     handleChangeConfirm = (confirmPass) => {
-        console.log(confirmPass)
         this.setState({confirmPass})
     }
     handleChangePhone = (phone) => {
-        console.log(typeof phone)
-        console.log(phone)
         this.setState({phone})
     }
     handleChangeEmail = (email) => {
