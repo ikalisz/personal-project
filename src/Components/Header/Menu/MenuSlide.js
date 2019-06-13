@@ -5,21 +5,28 @@ import {connect} from 'react-redux'
 import {toggleMenu} from '../../../redux/Reducers/menuReducer'
 
 function MenuSlide(props) {
+    console.log(props)
     return (
         <>
-        {props.menu?
+        {props.menu.menu?
         <MenuSlideContainer>
             <LoginLink to='/' onClick={props.toggleMenu}>
                 <div>Home</div>
             </LoginLink>
-            <LoginLink to='/user/login' onClick={props.toggleMenu} >
-                <div>Login</div>
-            </LoginLink>
-            <LoginLink to='/user/register' onClick={props.toggleMenu} >
-                <div>Register</div>
-            </LoginLink>
+            {props.user.username? 
+            null
+            :
+            <>
+                <LoginLink to='/user/login' onClick={props.toggleMenu} >
+                    <div>Login</div>
+                </LoginLink>
+                <LoginLink to='/user/register' onClick={props.toggleMenu} >
+                    <div>Register</div>
+                </LoginLink>
+            </>
+            }
             <LoginLink to='/garage' onClick={props.toggleMenu} >My Garage</LoginLink>
-            <LoginLink to='/user/repairs' onClick={props.toggleMenu}></LoginLink>
+            <LoginLink to='/user/repairs' onClick={props.toggleMenu}>Repairs</LoginLink>
         </MenuSlideContainer>
         :
         null
@@ -30,7 +37,7 @@ function MenuSlide(props) {
 
 const MenuSlideContainer = styled.main`
     width: 100%;
-    height: 150px;
+    min-height: 20px;
     background: pink;
     position: absolute;
     z-index: 20;
@@ -43,7 +50,10 @@ const LoginLink = styled(Link)`
 `
 
 function mapStateToProps(state) {
-    return state.menu
+    return {
+        menu: state.menu,
+        user: state.user
+    }
 }
 
 export default connect(mapStateToProps, {toggleMenu})(MenuSlide)

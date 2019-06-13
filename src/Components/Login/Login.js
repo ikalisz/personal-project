@@ -83,11 +83,23 @@ const LoginInput = styled.input`
     width: 60%;
     padding: 0;
     border: 0;
+    padding: 3px 5px;
+    @media (min-width: 380px) {
+        font-size: 20px;
+    }
+    @media (min-width: 500px) {
+        font-size: 28px;
+        width: 50%;
+    }
 `
 const LoginButton = styled.button`
     height: 25px;
     width: 30%;
     outline: none;
+    @media (min-width: 380px) {
+        font-size: 20px;
+        height: 30px;
+    }
 `
 
 export default withRouter(connect(null, {setUser, changeLoading})(Login))

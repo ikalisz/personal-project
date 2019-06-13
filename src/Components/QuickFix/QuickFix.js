@@ -4,17 +4,20 @@ import {setCar} from '../../redux/Reducers/editReducer'
 import {changeLoading} from '../../redux/Reducers/loadingReducer'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import Select from 'react-select'
+import './QuickFix.css'
 
 class QuickFix extends Component {
     constructor() {
         super()
         this.state = {
-            fixCategory: 'Oil Change',
-            fixDetails: '',
-            date: ''
+            fixCategory: 'Select Fix Type...',
+            date: '',
+            fixDetails: ''
         }
     }
     componentDidMount() {
+        this.props.changeLoading()
         const {id} = this.props.match.params
         const newId = +id
         axios.get('/repair/date').then(res => {
@@ -22,15 +25,15 @@ class QuickFix extends Component {
             curDate = curDate.split('').splice(0, 10).join('')
             this.setState({date: curDate})
         })
-        this.props.changeLoading()
         this.props.setCar(newId)
         this.props.changeLoading()
     }
-    handleUpdateCategory = (event) => {
-        this.setState({fixCategory: event.target.value})
+    handleUpdateCategory = (value) => {
+        console.log(value)
+        this.setState({fixCategory: value})
     }
-    handleDetailsUpdate = (details) => this.setState({fixDetails: details})
     handleSubmitRepair = () => {
+        if (this.state.fixCategory === 'Select Fix Type...') return window.alert('Please select fix type')
         axios.post(`/repairs/${this.props.car.id}`, {
             fix: this.state.fixDetails, 
             fixCategory: this.state.fixCategory,
@@ -43,21 +46,34 @@ class QuickFix extends Component {
             this.props.history.push('/')
         })
     }
+    handleDetailsUpdate = (details) => this.setState({fixDetails: details})
     render() {
+        const options = [
+            {value: "Oil Change", label: 'Oil Change'},
+            {value: "Tire Change", label: 'Tire Change'},
+            {value: "Tire Rotation", label: 'Tire Rotation'},
+            {value: "Other", label: 'Other'}
+        ]
+        console.log(this.state.fixCategory)
         return (
             <FixContainer>
                 <FormContainer onSubmit={e => e.preventDefault()}>
                     <CarDisplay>Car: {this.props.car.year} {this.props.car.make} {this.props.car.model}</CarDisplay>
                     <FixType>
-                        <FixTypeText>Fix Type</FixTypeText>
-                        <FixLabel>
-                            <FixTypeInput value={this.state.fixCategory} onChange={this.handleUpdateCategory} >
-                                <FixCategory value='Oil Change'>Oil Change</FixCategory>
-                                <FixCategory value='Tire Change'>Tire Change</FixCategory>
-                                <FixCategory value='Tire Rotation'>Tire Rotation</FixCategory>
-                                <FixCategory value='Other'>Other</FixCategory>
-                            </FixTypeInput>
-                        </FixLabel>
+                        <FixTypeText>Fix Type:</FixTypeText>
+                        <Select options={options} value={{value: this.state.fixCategory, label: this.state.fixCategory}} onChange={value => this.handleUpdateCategory(value.value)} 
+                        placeholder='Select Fix Type...'
+                        isSearchable={false}
+                        className='select'
+                        />
+                        {/* <label>
+                            <select value={this.state.fixCategory} onChange={e => this.handleUpdateCategory(e)} >
+                                <option value='Oil Change'>Oil Change</option>
+                                <option value='Tire Change'>Tire Change</option>
+                                <option value='Tire Rotation'>Tire Rotation</option>
+                                <option value='Other'>Other</option>
+                            </select>
+                        </label> */}
                     </FixType>
                     <FixDetailText>Details</FixDetailText>
                     <FixDetailInput value={this.state.fixDetails} onChange={e => this.handleDetailsUpdate(e.target.value)} />
@@ -100,23 +116,11 @@ const FixTypeText = styled.h4`
     margin: 0;
 `
 
-const FixTypeInput = styled.select`
-    :focus {
-        outline-color: pink;
-    }
-`
+const FixTypeInput = styled.select``
 
-const FixCategory = styled.option`
-    :focus {
-        outline-color: pink;
-    }
-`
+const FixCategory = styled.option``
 
-const FixLabel = styled.label`
-    :focus {
-        outline-color: pink;
-    }
-`
+const FixLabel = styled.label``
 
 const FixDetailText = styled.h4`
     margin: 0;

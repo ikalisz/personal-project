@@ -10,6 +10,7 @@ import AddCar from './Components/MyGarage/AddCar'
 import DisplaySingleCar from './Components/DisplayCar/DisplaySingleCar'
 import UpdateCar from './Components/DisplayCar/UpdateCar'
 import QuickFix from './Components/QuickFix/QuickFix'
+import Repairs from './Components/Repairs/Repairs'
 
 export default (
     <Switch>
@@ -22,6 +23,7 @@ export default (
         <Route path='/car/:id' component={DisplaySingleCar} />
         <Route path='/update/:id' component={UpdateCar} />
         <Route path='/quickfix/:id' component={QuickFix} />
+        <Route path='/user/repairs' component={Repairs} />
         <Route component={NotFound} />
     </Switch>
 )

@@ -46,5 +46,13 @@ module.exports = {
         const db = req.app.get('db')
         let date = await db.get_date()
         return res.status(200).send(date)
+    },
+    checkRepair: async (req, res) => {
+        const db = req.app.get('db')
+        const {id} = req.params
+        const result = await db.check_repair({car_id: id})
+        if (result[0]) {
+            return res.status(400).send('You already have a repair')
+        }
     }
 }

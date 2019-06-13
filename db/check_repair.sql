@@ -1,0 +1,1 @@
+select * from repairs where car_id = ${car_id} and status != 'Finished';

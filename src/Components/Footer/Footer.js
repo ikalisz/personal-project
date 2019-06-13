@@ -19,7 +19,7 @@ const FooterContainer = styled.footer`
     justify-content: center;
     align-items: center;
     @media (min-width: 1000px) {
-        height: 100px;
+        background: #green;
     }
 `
 
