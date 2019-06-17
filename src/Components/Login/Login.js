@@ -48,11 +48,12 @@ class Login extends Component {
         return (
            <LoginSection>
                <LoginForm onSubmit={(e) => e.preventDefault()}>
-                    <h2>Username</h2>
+                    <LoginText>Username</LoginText>
                     <LoginInput type='text' placeholder='Username' value={this.state.username} onChange={(e) => this.handleUpdateUsername(e.target.value)} />
-                    <h2>Password</h2>
+                    <LoginText>Password</LoginText>
                     <LoginInput type='password' placeholder='Password' value={this.state.password} onChange={(e) => this.handleUpdatePassword(e.target.value)} />
                     <LoginButton type="submit" onClick={this.handleBossSubmit}>Login</LoginButton>
+                    <HaveAnAccountText>Don't have an account?</HaveAnAccountText>
                     <LoginButton type="reset" onClick={this.handleGoRegister}>Register</LoginButton>
                </LoginForm>
            </LoginSection>
@@ -64,7 +65,6 @@ class Login extends Component {
 const LoginSection = styled.section`
     height: 100%;
     width: 100vw;
-    background: blue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +73,6 @@ const LoginSection = styled.section`
 const LoginForm = styled.form`
     height: 100%;
     width: 90%;
-    background: indianred;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -82,7 +81,8 @@ const LoginForm = styled.form`
 const LoginInput = styled.input`
     width: 60%;
     padding: 0;
-    border: 0;
+    border: 1px black solid;
+    border-radius: 5px;
     padding: 3px 5px;
     @media (min-width: 380px) {
         font-size: 20px;
@@ -100,6 +100,15 @@ const LoginButton = styled.button`
         font-size: 20px;
         height: 30px;
     }
+`
+
+const LoginText = styled.h2`
+    margin: 0;
+`
+
+const HaveAnAccountText = styled.p`
+    margin: 0;
+    color: #888
 `
 
 export default withRouter(connect(null, {setUser, changeLoading})(Login))

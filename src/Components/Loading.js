@@ -25,6 +25,7 @@ const ImageHolder = styled.div`
 
 const ImageLoader = styled.img`
 position: relative;
+  z-index: 33;
 `
 
 const ImageBackground = styled.div`
@@ -34,5 +35,6 @@ const ImageBackground = styled.div`
   background: #000;
   opacity: .9;
   top: 0;
+  z-index: 32
 `
 export default Loading

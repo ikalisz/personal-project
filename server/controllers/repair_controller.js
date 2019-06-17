@@ -47,12 +47,39 @@ module.exports = {
         let date = await db.get_date()
         return res.status(200).send(date)
     },
-    checkRepair: async (req, res) => {
+    checkRepair: async (req, res, next) => {
         const db = req.app.get('db')
         const {id} = req.params
         const result = await db.check_repair({car_id: id})
         if (result[0]) {
             return res.status(400).send('You already have a repair')
+        } else {
+            next()
         }
+    },
+    getUserRepairs: async (req, res) => {
+        const db = req.app.get('db')
+        const result = await db.get_user_repairs({user_id: req.session.user.id})
+        res.status(200).send(result)
+    },
+    getUserRepairsPending: async (req, res) => {
+        const db = req.app.get('db')
+        const result = await db.get_user_repairs_pending({user_id: req.session.user.id})
+        res.status(200).send(result)
+    },
+    getUserRepairsAccepted: async (req, res) => {
+        const db = req.app.get('db')
+        const result = await db.get_user_repairs_accepted({user_id: req.session.user.id})
+        res.status(200).send(result)
+    },
+    getUserRepairsOngoing: async (req, res) => {
+        const db = req.app.get('db')
+        const result = await db.get_user_repairs_ongoing({user_id: req.session.user.id})
+        res.status(200).send(result)
+    },
+    getUserRepairsFinished: async (req, res) => {
+        const db = req.app.get('db')
+        const result = await db.get_user_repairs_finished({user_id: req.session.user.id})
+        res.status(200).send(result)
     }
 }

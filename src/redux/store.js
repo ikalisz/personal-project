@@ -8,6 +8,7 @@ import carReducer from './Reducers/carReducer'
 import menuReducer from './Reducers/menuReducer'
 import addCarReducer from './Reducers/addCarReducer'
 import editReducer from './Reducers/editReducer'
+import repairReducer from './Reducers/repairReducer'
 
 const rootReducer = combineReducers({
     loaded: imageSlides,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
     loading: loadingReducer,
     menu: menuReducer,
     addCar: addCarReducer,
-    update: editReducer
+    update: editReducer,
+    repairs: repairReducer
 })
 
-export default createStore(rootReducer, applyMiddleware(promiseMiddleware, logger))
+export default createStore(rootReducer, applyMiddleware(promiseMiddleware))

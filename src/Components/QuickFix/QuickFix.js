@@ -29,7 +29,6 @@ class QuickFix extends Component {
         this.props.changeLoading()
     }
     handleUpdateCategory = (value) => {
-        console.log(value)
         this.setState({fixCategory: value})
     }
     handleSubmitRepair = () => {
@@ -54,7 +53,6 @@ class QuickFix extends Component {
             {value: "Tire Rotation", label: 'Tire Rotation'},
             {value: "Other", label: 'Other'}
         ]
-        console.log(this.state.fixCategory)
         return (
             <FixContainer>
                 <FormContainer onSubmit={e => e.preventDefault()}>
@@ -115,13 +113,6 @@ const FixType = styled.div`
 const FixTypeText = styled.h4`
     margin: 0;
 `
-
-const FixTypeInput = styled.select``
-
-const FixCategory = styled.option``
-
-const FixLabel = styled.label``
-
 const FixDetailText = styled.h4`
     margin: 0;
 `

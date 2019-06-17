@@ -22,7 +22,6 @@ class Profile extends Component {
         this.props.history.push('/user/change')
     }
     render() {
-        console.log(this.props)
         return (
             <ProfileMain>
                 <ProfileContainer>

@@ -55,7 +55,6 @@ export function updateMiles(miles) {
 }
 
 export function updateYear(year) {
-    console.log(year)
     return {
         type: UPDATE_YEAR,
         payload: year

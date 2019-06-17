@@ -16,7 +16,6 @@ const RESET_USER = 'RESET_USER'
 function reducer (state = initialState, action) {
     switch(action.type) {
         case SET_USER:
-            console.log(action)
             return {
                 ...state,
                 firstname: action.firstname,

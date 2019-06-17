@@ -5,7 +5,6 @@ import {connect} from 'react-redux'
 import {toggleMenu} from '../../../redux/Reducers/menuReducer'
 
 function MenuSlide(props) {
-    console.log(props)
     return (
         <>
         {props.menu.menu?

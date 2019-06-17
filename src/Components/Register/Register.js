@@ -102,7 +102,7 @@ class Register extends Component {
                     </RegisterInputContainer>
                     <ButtonContainer>
                         <RegisterButton type="submit" onClick={this.handleSubmitRegister}>Register</RegisterButton>
-                        <p>Already have an account?</p>
+                        <LoginText>Already have an account?</LoginText>
                         <RegisterButton onClick={this.handleGoLogin}>Login</RegisterButton>
                     </ButtonContainer>
                 </RegisterForm>
@@ -151,6 +151,12 @@ const RegisterButton = styled.button`
     height: 25px;
     width: 30%;
     outline: none;
+`
+
+const LoginText = styled.p`
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #888;
 `
 
 export default withRouter(connect(null, {changeLoading, setUser})(Register))

@@ -28,7 +28,6 @@ class AddCar extends Component {
         this.props.updateMiles(e.target.value)
     }
     render() {
-        console.log(this.props)
         return (
             <AddFormContainer>
                 <AddCarForm onSubmit={(e) => e.preventDefault()}>
