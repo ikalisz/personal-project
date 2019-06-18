@@ -11,6 +11,7 @@ import DisplaySingleCar from './Components/DisplayCar/DisplaySingleCar'
 import UpdateCar from './Components/DisplayCar/UpdateCar'
 import QuickFix from './Components/QuickFix/QuickFix'
 import Repairs from './Components/Repairs/Repairs'
+import AdminRepairs from './Components/Repairs/AdminRepairs'
 
 export default (
     <Switch>
@@ -24,6 +25,7 @@ export default (
         <Route path='/update/:id' component={UpdateCar} />
         <Route path='/quickfix/:id' component={QuickFix} />
         <Route path='/user/repairs' component={Repairs} />
+        <Route path='/admin/repairs' component={AdminRepairs} />
         <Route component={NotFound} />
     </Switch>
 )

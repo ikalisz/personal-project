@@ -14,8 +14,8 @@ function DisplayCar(props) {
         props.changeLoading()
         axios.delete(`/car/${id}`)
         .then(res => {
-            props.changeLoading()
             props.getCars()
+            props.changeLoading()
         })
         .catch(err => {
             props.changeLoading()

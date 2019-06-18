@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {changeLoading} from '../../redux/Reducers/loadingReducer'
 import {getRepairs} from '../../redux/Reducers/repairReducer'
-import AdminRepairs from './AdminRepairs'
+import {Redirect} from 'react-router-dom'
 import DisplayRepair from './DisplayRepair'
 import styled from 'styled-components'
 
@@ -19,11 +19,8 @@ class Repairs extends Component {
         }) 
         return (
             <RepairsDisplay>
-                {this.props.user.username === 'admin'?
-                <AdminRepairs />
-                :
+                {this.props.user.username? <Redirect to='/admin/repairs' />: null}
                 {repairs}
-                }
             </RepairsDisplay>
         )
     }

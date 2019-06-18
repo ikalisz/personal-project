@@ -22,25 +22,25 @@ module.exports = {
         await db.update_repair_total({repair_id: id, total})
         return res.status(200).send('Total updated')
     },
-    updateDateSubmitted: async (req, res) => {
+    updateDateAccepted: async (req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
-        const {date_submitted} = req.body
-        await db.update_date_submitted({repair_id: id, date_submitted})
+        const {date_accept} = req.body
+        await db.update_repair_date_accept({repair_id: id, date_accept})
         return res.status(200).send('Date updated')
     },
     updateDateStarted: async (req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
         const {date_start} = req.body
-        await db.update_date_start({repair_id: id, date_start})
+        await db.update_repair_date_start({repair_id: id, date_start})
         return res.status(200).send('Date updated')
     },
     updateDateFinished: async (req, res) => {
         const db = req.app.get('db')
         const {id} = req.params
         const {date_finished} = req.body
-        await db.update_date_finished({repair_id: id, date_finished})
+        await db.update_repair_date_finished({repair_id: id, date_finished})
     },
     getDate: async (req, res) => {
         const db = req.app.get('db')
@@ -64,22 +64,42 @@ module.exports = {
     },
     getUserRepairsPending: async (req, res) => {
         const db = req.app.get('db')
-        const result = await db.get_user_repairs_pending({user_id: req.session.user.id})
-        res.status(200).send(result)
+        if (req.session.user.username === 'admin') {
+            const result = await db.get_repair_pending_admin()
+            res.status(200).send(result)
+        } else {
+            const result = await db.get_user_repairs_pending({user_id: req.session.user.id})
+            res.status(200).send(result)
+        }
     },
     getUserRepairsAccepted: async (req, res) => {
         const db = req.app.get('db')
-        const result = await db.get_user_repairs_accepted({user_id: req.session.user.id})
-        res.status(200).send(result)
+        if (req.session.user.username === 'admin') {
+            const result = await db.get_repair_accepted_admin()
+            res.status(200).send(result)
+        } else {
+            const result = await db.get_user_repairs_accepted({user_id: req.session.user.id})
+            res.status(200).send(result)
+        }
     },
     getUserRepairsOngoing: async (req, res) => {
         const db = req.app.get('db')
-        const result = await db.get_user_repairs_ongoing({user_id: req.session.user.id})
-        res.status(200).send(result)
+        if (req.session.user.username === 'admin') {
+            const result = await db.get_repair_ongoing_admin()
+            res.status(200).send(result)
+        } else {
+            const result = await db.get_user_repairs_ongoing({user_id: req.session.user.id})
+            res.status(200).send(result)
+        }
     },
     getUserRepairsFinished: async (req, res) => {
         const db = req.app.get('db')
-        const result = await db.get_user_repairs_finished({user_id: req.session.user.id})
-        res.status(200).send(result)
+        if (req.session.user.username === 'admin') {
+            const result = await db.get_repair_finished_admin()
+            res.status(200).send(result)
+        } else {
+            const result = await db.get_user_repairs_finished({user_id: req.session.user.id})
+            res.status(200).send(result)
+        }
     }
 }
