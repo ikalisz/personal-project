@@ -9,6 +9,7 @@ const car_ctrl = require('./controllers/car_controller')
 const repair_ctrl = require('./controllers/repair_controller')
 const twilio_ctrl = require('./controllers/twilio_controller')
 app.use(express.static(`${__dirname}/../build`))
+app.use(express.static(`${__dirname}/../src/assests`))
 app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,
