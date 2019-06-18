@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import promiseMiddleware from 'redux-promise-middleware'
-import logger from 'redux-logger'
 import loadingReducer from './Reducers/loadingReducer'
 import imageSlides from './Reducers/imageSlides'
 import userReducer from './Reducers/userReducer'

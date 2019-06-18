@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import {withRouter, Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {changeLoading} from '../../redux/Reducers/loadingReducer'
 import {getCars} from '../../redux/Reducers/carReducer'
 import * as Icons from 'react-feather'

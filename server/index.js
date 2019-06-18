@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const massive = require('massive')
-const path = require('path')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 const session = require('express-session')
 const auth_ctrl = require('./controllers/auth_controller')
@@ -10,9 +9,6 @@ const car_ctrl = require('./controllers/car_controller')
 const repair_ctrl = require('./controllers/repair_controller')
 const twilio_ctrl = require('./controllers/twilio_controller')
 app.use(express.static(`${__dirname}/../build`))
-app.use('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
-})
 app.use(express.json())
 app.use(session({
     secret: SESSION_SECRET,

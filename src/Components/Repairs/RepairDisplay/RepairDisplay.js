@@ -65,10 +65,7 @@ const RepairContainer = styled.div`
     justify-content: center;
     align-items: center;
 `
-const CarImage = styled.img`
-    height: 150px;
-    width: 150px;
-`
+
 
 const TextContainer = styled.div`
     height: 100%;
