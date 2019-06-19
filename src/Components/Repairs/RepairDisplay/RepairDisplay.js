@@ -34,7 +34,7 @@ function RepairDisplay(props) {
         axios.get('/repair/date').then(res => {
             let curDate = res.data[0].current_date
             curDate = curDate.split('').splice(0, 10).join('')
-            axios.put(`/repairs/datefin/${props.id}`, {date_finished: curDate}).then(res => {
+            axios.put(`/repairs/datefin/${props.id}`, {date_finished: curDate, phone: props.phone, carMake: props.make, carYear: props.year, carModel: props.model}).then(res => {
                 props.fnFinishedOngoing()
                 props.changeLoading()
             })

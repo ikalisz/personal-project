@@ -15,5 +15,16 @@ module.exports = {
             from: TWILIO_PHONE
         })
         return res.status(200).send('Text send')
+    },
+    sendFinishedText: async (req, res) => {
+        const {carYear, carMake, carModel, phone} = req.body
+        console.log('Here')
+        console.log(req.body)
+        client.messages.create({
+            body: `Your ${carYear} ${carMake} ${carModel} is ready to pick up!`,
+            to: `+1${phone}`,
+            from: TWILIO_PHONE
+        })
+        return res.status(200).send('Text send')
     }
 }

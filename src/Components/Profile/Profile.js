@@ -9,7 +9,6 @@ class Profile extends Component {
         this.props.changeLoading()
         axios.get('/auth/user')
         .then(res => {
-            console.log(res.data)
             this.props.changeLoading()
         })
         .catch(err => {

@@ -49,16 +49,16 @@ class AdminRepairs extends Component {
 
     render() {
         const pendingDisplay = this.state.repairPending.map((repair, i) => {
-            return <RepairDisplay key={i} status={repair.status} id={repair.repair_id} fix_category={repair.fix_category} date_submitted={repair.date_submitted} date_finished={repair.date_finished} date_start={repair.date_start} fnAcceptedPending={this.fnAcceptedPending} year={repair.year} model={repair.model} make={repair.make} />
+            return <RepairDisplay key={i} status={repair.status} id={repair.repair_id} fix_category={repair.fix_category} date_submitted={repair.date_submitted} date_finished={repair.date_finished} date_start={repair.date_start} fnAcceptedPending={this.fnAcceptedPending} year={repair.year} model={repair.model} make={repair.make} phone={repair.phone} />
         })
         const acceptedDisplay = this.state.repairAccepted.map((repair, i) => {
-            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_accept={repair.date_accept} fnStartedAccepted={this.fnStartedAccepted} year={repair.year} model={repair.model} make={repair.make} />
+            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_accept={repair.date_accept} fnStartedAccepted={this.fnStartedAccepted} year={repair.year} model={repair.model} make={repair.make} phone={repair.phone} />
         })
         const ongoingDisplay = this.state.repairOngoing.map((repair, i) => {
-            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_start={repair.date_start} fnFinishedOngoing={this.fnFinishedOngoing} year={repair.year} model={repair.model} make={repair.make} />
+            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_start={repair.date_start} fnFinishedOngoing={this.fnFinishedOngoing} year={repair.year} model={repair.model} make={repair.make} phone={repair.phone} />
         })
         const finishedDisplay = this.state.repairFinished.map((repair, i) => {
-            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_finished={repair.date_finished} year={repair.year} model={repair.model} make={repair.make} />
+            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_finished={repair.date_finished} year={repair.year} model={repair.model} make={repair.make} phone={repair.phone} />
         })
         return (
             <AdminRepairContainer>

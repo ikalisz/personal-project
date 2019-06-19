@@ -51,5 +51,5 @@ app.post('/repairs/:id', repair_ctrl.checkRepair, repair_ctrl.createRepair, twil
 app.put('/repairs/total/:id', repair_ctrl.updateTotal)
 app.put('/repairs/dateaccept/:id', repair_ctrl.updateDateAccepted)
 app.put('/repairs/datestart/:id', repair_ctrl.updateDateStarted)
-app.put('/repairs/datefin/:id', repair_ctrl.updateDateFinished)
+app.put('/repairs/datefin/:id', repair_ctrl.updateDateFinished, twilio_ctrl.sendFinishedText)
 app.put('/repairs/status/:id', repair_ctrl.updateStatus)

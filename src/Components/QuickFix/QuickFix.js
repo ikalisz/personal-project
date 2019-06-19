@@ -42,6 +42,7 @@ class QuickFix extends Component {
             date: this.state.date
         })
         .then(res => {
+            window.alert('Repair submitted!')
             this.props.history.push('/')
         })
     }

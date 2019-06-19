@@ -36,11 +36,13 @@ module.exports = {
         await db.update_repair_date_start({repair_id: id, date_start})
         return res.status(200).send('Date updated')
     },
-    updateDateFinished: async (req, res) => {
+    updateDateFinished: async (req, res, next) => {
         const db = req.app.get('db')
         const {id} = req.params
         const {date_finished} = req.body
         await db.update_repair_date_finished({repair_id: id, date_finished})
+        console.log(req.body)
+        next()
     },
     getDate: async (req, res) => {
         const db = req.app.get('db')
