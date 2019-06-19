@@ -32,15 +32,15 @@ class Garage extends Component {
         })
         return (
             <MyGarage>
-            <ButtonContainer>
-                <AddCar onClick={this.addCar}>
-                    <Icons.PlusSquare />
-                    Add Car
-                </AddCar>
-            </ButtonContainer>
-            <GarageContainer>
-                {cars}
-            </GarageContainer>
+                <ButtonContainer>
+                    <AddCar onClick={this.addCar}>
+                        <Icons.PlusSquare />
+                        Add Car
+                    </AddCar>
+                </ButtonContainer>
+                <GarageContainer>
+                    {cars}
+                </GarageContainer>
             </MyGarage>
         )
     }
@@ -55,6 +55,9 @@ const GarageContainer = styled.main`
     align-items: center;
     background: pink;
     border-top: 1px solid black;
+    @media (min-width: 1000px) {
+        height: 70vh;
+    }
 `
 
 const AddCar = styled.div`

@@ -16,20 +16,21 @@ const ImageHolder = styled.div`
   height: 100vh;
   width: 100%;
   opacity: 1;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   top: 0;
+  z-index: 33
 `
 
 const ImageLoader = styled.img`
 position: relative;
-  z-index: 33;
+  z-index: 34;
 `
 
 const ImageBackground = styled.div`
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100%;
   background: #000;

@@ -30,15 +30,17 @@ class Login extends Component {
         .then(res => {
             this.props.changeLoading()
             this.props.setUser({...res.data})
+            this.handleResetState()
+            this.props.history.push('/')
         })
         .catch(err => {
             this.props.changeLoading()
+            this.handleResetState()
+            window.alert('Username or Password is incorrect')
         })
     }
     handleBossSubmit = () => {
         this.handleLogin()
-        this.handleResetState()
-        return this.props.history.push('/')
     }
     handleGoRegister = () => {
         this.handleResetState()
@@ -89,7 +91,7 @@ const LoginInput = styled.input`
     }
     @media (min-width: 500px) {
         font-size: 20px;
-        width: 50%;
+        width: 40%;
     }
 `
 const LoginButton = styled.button`
@@ -99,6 +101,7 @@ const LoginButton = styled.button`
     @media (min-width: 380px) {
         font-size: 20px;
         height: 30px;
+        width: 15%;
     }
 `
 

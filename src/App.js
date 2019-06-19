@@ -58,7 +58,7 @@ const RouteContainer = styled.main`
   display: flex;
   justify-content: center;
   @media (min-width: 1000px) {
-    min-height: 800px;
+    height: 90%;
   }
 `
 

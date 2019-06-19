@@ -27,8 +27,9 @@ const HeaderEle = styled.header`
     align-items: center;
     @media (min-width: 500px) {
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
+        height: 15vh;
     }
 `
 
@@ -42,7 +43,7 @@ const LogoDisplay = styled.img`
 `
 const MenuContainer = styled.main`
     height: 20%;
-    width: 65%;
+    width: 75%;
     background: #fff;
     display: flex;
     justify-content: space-between;
