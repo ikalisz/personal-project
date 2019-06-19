@@ -43,13 +43,21 @@ function RepairDisplay(props) {
     return (
         <RepairContainer>
             <TextContainer>
-                <RepairText>Status: {props.status}</RepairText>
-                {props.status === 'Pending'? <><RepairText>Date Submitted:</RepairText><RepairText> {props.date_submitted}</RepairText></>: null}
-                {props.status === 'Accepted' ? <><RepairText>Date Accepted:</RepairText><RepairText> {props.date_accept}</RepairText></>: null}
-                {props.status === 'Ongoing'? <><RepairText>Date Started:</RepairText><RepairText> {props.date_start}</RepairText></>: null}
-                {props.status === 'Finished'? <><RepairText>Date Finished: </RepairText><RepairText>{props.date_finished}</RepairText></>: null}
-                <RepairText>Repair Type:</RepairText>
-                <RepairText>{props.fix_category}</RepairText>
+                <RepairRow>
+                    <RepairText>Status: </RepairText><RepairText>{props.status}</RepairText>
+                </RepairRow>
+                <RepairRow>
+                    <RepairText>Car: </RepairText>
+                    <RepairText>{props.year} {props.make} {props.model}</RepairText>
+                </RepairRow>
+                {props.status === 'Pending'? <RepairRow><RepairText>Date Submitted:</RepairText><RepairText> {props.date_submitted}</RepairText></RepairRow>: null}
+                {props.status === 'Accepted' ? <RepairRow><RepairText>Date Accepted:</RepairText><RepairText> {props.date_accept}</RepairText></RepairRow>: null}
+                {props.status === 'Ongoing'? <RepairRow><RepairText>Date Started:</RepairText><RepairText> {props.date_start}</RepairText></RepairRow>: null}
+                {props.status === 'Finished'? <RepairRow><RepairText>Date Finished: </RepairText><RepairText>{props.date_finished}</RepairText></RepairRow>: null}
+                <RepairRow>
+                    <RepairText>Repair Type:</RepairText>
+                    <RepairText>{props.fix_category}</RepairText>
+                </RepairRow>
                 {props.status === 'Pending'? <UpdateButton onClick={updateRepair}>Accept</UpdateButton> : null }
                 {props.status === 'Accepted' ? <UpdateButton onClick={updateAccepted}>Start</UpdateButton> : null}
                 {props.status === 'Ongoing' ? <UpdateButton onClick={updateOngoing} >Finish</UpdateButton> : null}
@@ -64,12 +72,26 @@ const RepairContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (min-width: 1000px) {
+        min-height: 200px;
+    }
+`
+
+const RepairRow = styled.div`
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    @media (min-width: 1000px) {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
 `
 
 
 const TextContainer = styled.div`
     height: 100%;
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -77,7 +99,7 @@ const TextContainer = styled.div`
 `
 const RepairText = styled.p`
     margin: 0;
-    width: 100%;
+    width: 40%;
     height: 20px;
 `
 

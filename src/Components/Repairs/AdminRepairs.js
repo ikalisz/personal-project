@@ -49,16 +49,16 @@ class AdminRepairs extends Component {
 
     render() {
         const pendingDisplay = this.state.repairPending.map((repair, i) => {
-            return <RepairDisplay key={i} status={repair.status} id={repair.repair_id} fixCategory={repair.fixCategory} date_submitted={repair.date_submitted} date_finished={repair.date_finished} date_start={repair.date_start} fnAcceptedPending={this.fnAcceptedPending} />
+            return <RepairDisplay key={i} status={repair.status} id={repair.repair_id} fix_category={repair.fix_category} date_submitted={repair.date_submitted} date_finished={repair.date_finished} date_start={repair.date_start} fnAcceptedPending={this.fnAcceptedPending} year={repair.year} model={repair.model} make={repair.make} />
         })
         const acceptedDisplay = this.state.repairAccepted.map((repair, i) => {
-            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fixCategory={repair.fixCategory} date_accept={repair.date_accept} fnStartedAccepted={this.fnStartedAccepted} />
+            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_accept={repair.date_accept} fnStartedAccepted={this.fnStartedAccepted} year={repair.year} model={repair.model} make={repair.make} />
         })
         const ongoingDisplay = this.state.repairOngoing.map((repair, i) => {
-            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fixCategory={repair.fixCategory} date_start={repair.date_start} fnFinishedOngoing={this.fnFinishedOngoing} />
+            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_start={repair.date_start} fnFinishedOngoing={this.fnFinishedOngoing} year={repair.year} model={repair.model} make={repair.make} />
         })
         const finishedDisplay = this.state.repairFinished.map((repair, i) => {
-            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fixCategory={repair.fixCategory} date_finished={repair.date_finished} />
+            return <RepairDisplay key={i} id={repair.repair_id} status={repair.status} fix_category={repair.fix_category} date_finished={repair.date_finished} year={repair.year} model={repair.model} make={repair.make} />
         })
         return (
             <AdminRepairContainer>
@@ -97,7 +97,6 @@ class AdminRepairs extends Component {
 const AdminRepairContainer = styled.div`
     height: 100%;
     width: 100%;
-    background: blue;
     display: flex;
     flex-direction: column;
 `
@@ -119,7 +118,6 @@ const RepairContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    background: pink;
     align-items: center;
     border: 1px solid black;
 `

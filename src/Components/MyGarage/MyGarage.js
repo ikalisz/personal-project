@@ -53,10 +53,10 @@ const GarageContainer = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: pink;
     border-top: 1px solid black;
     @media (min-width: 1000px) {
-        height: 70vh;
+        height: 75vh;
+        width: 70%;
     }
 `
 
@@ -71,6 +71,7 @@ const AddCar = styled.div`
     :hover {
         color: pink;
         border-color: pink;
+        cursor: pointer;
     }
 `
 const ButtonContainer = styled.div`
@@ -85,6 +86,7 @@ const MyGarage = styled.main`
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 `
 
 function mapStateToProps(state) {

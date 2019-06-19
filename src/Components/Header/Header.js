@@ -44,7 +44,6 @@ const LogoDisplay = styled.img`
 const MenuContainer = styled.main`
     height: 20%;
     width: 75%;
-    background: #fff;
     display: flex;
     justify-content: space-between;
     @media (min-width: 500px) {

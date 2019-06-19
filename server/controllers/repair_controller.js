@@ -66,6 +66,7 @@ module.exports = {
         const db = req.app.get('db')
         if (req.session.user.username === 'admin') {
             const result = await db.get_repair_pending_admin()
+            console.log(result)
             res.status(200).send(result)
         } else {
             const result = await db.get_user_repairs_pending({user_id: req.session.user.id})

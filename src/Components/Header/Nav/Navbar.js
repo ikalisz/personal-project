@@ -23,19 +23,24 @@ function Navbar(props) {
     }
     return (
         <NavBar>
-            <Link to='/' ><LinkText>Home</LinkText></Link>
+            <Link style={{ textDecoration: 'none' }} to='/' ><LinkText>Home</LinkText></Link>
             {props.username?
-                <Link to='/garage'><LinkText>Garage</LinkText></Link>
+                <Link style={{ textDecoration: 'none' }} to='/garage'><LinkText>Garage</LinkText></Link>
                 :
-                <Link to='/user/login'><LinkText>Login</LinkText></Link>
+                <Link style={{ textDecoration: 'none' }} to='/user/login'><LinkText>Login</LinkText></Link>
             }
             {props.username?
-                <Link to='/user/profile'><LinkText>Profile</LinkText></Link>
+                <Link style={{textDecoration: 'none'}} to='/user/repairs'><LinkText>Repairs</LinkText></Link>
+                :
+                null
+            }
+            {props.username?
+                <Link style={{ textDecoration: 'none' }} to='/user/profile'><LinkText>Profile</LinkText></Link>
             :
-                <Link to='/user/register'><LinkText>Register</LinkText></Link>
+                <Link style={{ textDecoration: 'none' }} to='/user/register'><LinkText>Register</LinkText></Link>
             }
             {props.username?
-                <LinkText onClick={logout}>Logout</LinkText>
+                <LinkText style={{ textDecoration: 'none' }} onClick={logout}>Logout</LinkText>
                 :
                 null
             }
@@ -53,11 +58,13 @@ const LinkText = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10px;
-    width: 20px;
+    height: 20px;
+    font-size: 18px;
     color: #fff;
+    border: none;
     :hover {
         cursor: pointer;
+        color: pink;
     }
 `
 

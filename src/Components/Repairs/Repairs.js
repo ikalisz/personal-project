@@ -19,7 +19,7 @@ class Repairs extends Component {
         }) 
         return (
             <RepairsDisplay>
-                {this.props.user.username? <Redirect to='/admin/repairs' />: null}
+                {this.props.user.username === 'admin' ? <Redirect to='/admin/repairs' />: null}
                 {repairs}
             </RepairsDisplay>
         )
@@ -33,6 +33,9 @@ const RepairsDisplay = styled.div`
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    @media (min-width: 1000px) {
+        width: 60%;
+    }
 `
 
 function mapStateToProps(state) {

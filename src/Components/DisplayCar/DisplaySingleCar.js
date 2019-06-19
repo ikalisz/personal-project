@@ -35,7 +35,6 @@ function DisplaySingleCar(props) {
 const Container = styled.div`
     height: 100%;
     width: 100%;
-    background: pink;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +49,9 @@ const DisplayCarBox = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    @media (min-width: 1000px) {
+        width: 60%;
+    }
 `
 
 const CarInfo = styled.h3`

@@ -12,10 +12,16 @@ export default class ReactCarousel extends Component {
                         <img src={require('../../assests/jeff-tsx.jpg')}  alt=""  />
                     </div>
                     <div style={{height: '100%'}}>
-                        <img src={require('../../assests/bmw-pic.jpg')} alt="" />
+                        <img src={require('../../assests/69mach1.jpg')} alt="" />
                     </div>
                     <div style={{height: '100%'}}>
                         <img src={require('../../assests/280z-tim.jpg')} alt="" />
+                    </div>
+                    <div style={{height: '100%'}}>
+                        <img src={require('../../assests/69mach1part2.jpg')} alt="" />
+                    </div>
+                    <div style={{height: '100%'}}>
+                        <img src={require('../../assests/bmw-pic.jpg')} alt="" />
                     </div>
                 </Carousel>
             </div>
