@@ -2,8 +2,25 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import {connect} from 'react-redux'
+import axios from 'axios'
+import {changeLoading} from '../../../redux/Reducers/loadingReducer'
+import {resetUser} from '../../../redux/Reducers/userReducer'
+import {withRouter} from 'react-router-dom'
 
 function Navbar(props) {
+    function logout() {
+        props.changeLoading()
+        axios.get('/auth/logout')
+        .then(res => {
+            props.changeLoading()
+            props.resetUser()
+            props.history.push('/')
+        })
+        .catch(err => {
+            console.log(err)
+            props.changeLoading()
+        })
+    }
     return (
         <NavBar>
             <Link to='/' ><LinkText>Home</LinkText></Link>
@@ -18,7 +35,7 @@ function Navbar(props) {
                 <Link to='/user/register'><LinkText>Register</LinkText></Link>
             }
             {props.username?
-                <LinkText>Logout</LinkText>
+                <LinkText onClick={logout}>Logout</LinkText>
                 :
                 null
             }
@@ -30,7 +47,7 @@ function mapStateToProps(state) {
     return state.user
 }
 
-export default connect(mapStateToProps)(Navbar)
+export default withRouter(connect(mapStateToProps, {changeLoading, resetUser})(Navbar))
 
 const LinkText = styled.div`
     display: flex;
@@ -39,6 +56,9 @@ const LinkText = styled.div`
     height: 10px;
     width: 20px;
     color: #fff;
+    :hover {
+        cursor: pointer;
+    }
 `
 
 const NavBar = styled.nav`
