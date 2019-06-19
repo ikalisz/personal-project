@@ -44,7 +44,7 @@ class AddCar extends Component {
 
 const AddFormContainer = styled.div`
     height: 65vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
 `

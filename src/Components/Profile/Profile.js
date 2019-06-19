@@ -45,7 +45,7 @@ function mapStateToProps(state) {
 
 const ProfileMain = styled.main`
     height: 65vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
 `

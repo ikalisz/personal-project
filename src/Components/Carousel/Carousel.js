@@ -110,7 +110,7 @@ background-opacity: .7;
 `
 const MainContainer = styled.main`
 height: 85vh;
-width: 100vw;
+width: 100%;
 display: none;
 @media (min-width:1000px) {
     display: flex;

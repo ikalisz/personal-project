@@ -63,7 +63,6 @@ export function toggleEdit() {
 
 export function setCar(carId) {
     let result = axios.get(`/car/${carId}`).then(res => res.data)
-    console.log(result)
     return {
         type: SET_CAR,
         payload: result

@@ -113,7 +113,7 @@ class Register extends Component {
 
 const RegisterSection = styled.section`
     height: 100%;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

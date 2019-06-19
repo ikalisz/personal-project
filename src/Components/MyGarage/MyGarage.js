@@ -49,7 +49,7 @@ class Garage extends Component {
 const GarageContainer = styled.main`
     height: 60vh;
     overflow-y: scroll;
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +72,7 @@ const AddCar = styled.div`
 `
 const ButtonContainer = styled.div`
     height: 10vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

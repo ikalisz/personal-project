@@ -14,7 +14,7 @@ function Loading() {
 
 const ImageHolder = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   opacity: 1;
   position: absolute;
   display: flex;
@@ -31,7 +31,7 @@ position: relative;
 const ImageBackground = styled.div`
   position: absolute;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   background: #000;
   opacity: .9;
   top: 0;

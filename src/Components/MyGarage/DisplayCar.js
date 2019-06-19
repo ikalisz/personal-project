@@ -42,7 +42,7 @@ function DisplayCar(props) {
 
 const CarContainer = styled.div`
     min-height: 150px;
-    width: 100vw;
+    width: 100%;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #000;

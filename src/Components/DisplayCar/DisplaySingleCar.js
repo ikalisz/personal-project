@@ -9,8 +9,6 @@ function DisplaySingleCar(props) {
         return car.car_id === +props.match.params.id
     })
     let carDisplay = result[0]
-    console.log(props)
-    console.log(carDisplay)
     function toUpdate () {
         props.history.push(`/update/${carDisplay.car_id}`)
     }

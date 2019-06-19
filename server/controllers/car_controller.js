@@ -3,7 +3,8 @@ module.exports = {
         const {miles, year, make, model, img} = req.body
         const {user} = req.session
         const db = req.app.get('db')
-        await db.register_car({year, make, model, img, user_id: user.id, miles})
+        let removed = false
+        await db.register_car({year, make, model, img, user_id: user.id, miles, removed})
         let result = await db.get_user_cars({user_id: user.id})
         await db.create_mod({mod: 'Stock', car_id: result[result.length - 1].car_id})
         return res.status(201).send('Car registered!')

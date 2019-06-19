@@ -64,7 +64,7 @@ class Login extends Component {
 //Styled Components
 const LoginSection = styled.section`
     height: 100%;
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -88,7 +88,7 @@ const LoginInput = styled.input`
         font-size: 20px;
     }
     @media (min-width: 500px) {
-        font-size: 28px;
+        font-size: 20px;
         width: 50%;
     }
 `

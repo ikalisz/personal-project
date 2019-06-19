@@ -49,14 +49,17 @@ function mapStateToProps(reduxState) {
 
 const AppContainer= styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 `
 
 const RouteContainer = styled.main`
   height: 65vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
+  @media (min-width: 1000px) {
+    min-height: 800px;
+  }
 `
 
 export default connect(mapStateToProps, {resetMenu, setUser})(App);

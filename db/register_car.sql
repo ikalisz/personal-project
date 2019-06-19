@@ -1,2 +1,2 @@
-insert into car_important (year, make, model, img, user_id, miles)
-values (${year}, ${make}, ${model}, ${img}, ${user_id}, ${miles});
+insert into car_important (year, make, model, user_id, miles, removed, img)
+values (${year}, ${make}, ${model}, ${user_id}, ${miles}, ${removed}, ${img});
